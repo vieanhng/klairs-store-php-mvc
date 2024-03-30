@@ -1,0 +1,11 @@
+{
+    "name": "g2/klairs-store-php-mvc",
+    "autoload": {
+        "psr-4": {
+            "G2\\KlairsStorePhpMvc\\": "app/"
+        }
+    },
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    }
+}
