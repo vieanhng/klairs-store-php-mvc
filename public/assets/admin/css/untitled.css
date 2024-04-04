@@ -1,0 +1,16 @@
+.sidebar-dark .nav-item .nav-link.active, .sidebar-dark .nav-item .nav-link:active, .sidebar-dark .nav-item .nav-link:focus, .sidebar-dark .nav-item .nav-link:hover {
+  background-color: white;
+}
+
+span {
+}
+
+.content-container {
+  background: #ffffff;
+  border-radius: 5px;
+  width: auto;
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-bottom: 25px;
+}
+

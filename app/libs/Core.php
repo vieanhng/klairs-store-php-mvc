@@ -78,13 +78,30 @@ class Core {
     }
 
     public function getUrl(){
+
         if(isset($_GET['url'])){
+            if($_GET['url'])
             $url = rtrim($_GET['url'], '/');
+            if($this->replaceRewriteUrl($_GET['url'])){
+                $url =  $this->replaceRewriteUrl($_GET['url']);
+            }
             $url = filter_var($url, FILTER_SANITIZE_URL);
             $url = explode('/', $url);
            return $url;
         }
     }
+
+    public function replaceRewriteUrl($urlPath){
+        foreach (URL_REWRITE as $key => $value) {
+            if(strtolower($urlPath) == strtolower($key)){
+                return $value;
+            }else{
+                return false;
+            }
+        }
+
+    }
+
 }
 
 ?>

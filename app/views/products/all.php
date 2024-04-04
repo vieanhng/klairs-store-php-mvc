@@ -1,69 +1,72 @@
+<?php require_once ROOT . "/views/inc/header.php" ?>
 
-<?php require_once ROOT ."/views/inc/adminHeader.php" ?>
-<?php require_once ROOT ."/views/inc/sidebar.php" ?>
-    <div class="  text-center mt-4">
-
-        <h5>Products Management</h5>
-            
-        <input type="text" id='search_pro' class="form-control w-50 mx-auto" placeholder="Search">
-   
-        <span class="float-right m-3">
-            <a href="<?php echo URL ?>/products/add">Add new pro +</a>
-        </span>
-        <?php if($data['products'] ){ ?> 
-        <table class="table table-dark table-responsive-md searched">
-            <thead>
-                <tr>
-                    <th>Series</th>
-                    <th>Name</th>
-                    <th>Creator</th>
-                    <th>Status</th>
-                    <th>Category</th>
-                    <th>Brand</th>
-                    <th>image</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php 
-                
-
-                
-                $i = 0;
-                    foreach ( $data['products'] as $pro) { $i++ ?>                        
-                    <tr>
-                        <td><?php echo $i ?></td>
-                        <td>
-                            <a href="<?php echo URL ?>/products/show/<?php echo $pro->product_id?>" class="text-danger">
-                                <?php echo $pro->name ?>
-                            </a>
-                        </td>
-                        <td><?php echo $pro->creator ?></td>
-                        <td>
-                            <a href="<?php echo URL ?>/products/<?php echo $pro->active == 0 ? 'activate':'inActivate'?>/<?php echo $pro->product_id ?>">
-                                <?php echo $pro->active == 0 ? '<i class="fa fa-thumbs-down text-secondary"></i>':'<i class="fa fa-thumbs-up  text-success"></i>' ?>
-                            </a>
-                        </td>
-                        <td><?php echo $pro->cat_name ?></td>
-                        <td><?php echo $pro->man_name ?></td>
-                        <td><img src="<?php echo URL ?>/uploads/<?php echo $pro->image ?>" alt="" style='height:50px;width:50px;border-radius:50%'></td>
-                        <td>
-                        <form class='d-inline' action="<?php echo URL ?>/products/delete/<?php echo $pro->product_id?>" method='GET'>
-                            <input type="hidden" name="csrf" value="<?php new Csrf(); echo Csrf::get()?>">
-                            <button class='btn btn-danger delete  btn-sm py-0' type="submit" ><i class="fa fa-trash"></i></button>
-                        </form>
-                            <a href="<?php echo URL ?>/products/edit/<?php echo $pro->product_id?>" class="btn btn-info btn-sm  py-0"><i class="fa fa-edit"></i></a>
-                        </td>
-                    </tr>
-                <?php } 
-                
-                ?>
-            </tbody>
-        </table>
-        <?php }else{?>
-                    <p class="text-center text-danger"><span class='btn btn-sm btn-danger' style='border-radius:50%'><i class="fa fa-warning"></i></span> There is no Products</p>
-                    <?php  } ?>
+    <div class="breadcrumb">
+    <div class="container">
+        <h2><?=$data['title']?></h2>
     </div>
+</div>
+    <div class="shop">
+        <div class="container-full-half">
+            <div class="shop-header">
 
+                <select class="customed-select" name="#">
+                    <option value="az">A to Z</option>
+                    <option value="za">Z to A</option>
+                    <option value="low-high">Low to High Price</option>
+                    <option value="high-low">High to Low Price</option>
+                </select>
 
-<?php require_once ROOT ."/views/inc/adminFooter.php" ?>
+            </div>
+            <div class="shop-products">
+                <div class="shop-products__gird" style="">
+                    <div class="row mx-n1 mx-lg-n3">
+                        <div class="col-6 col-sm-6 col-md-4 col-lg-3 px-1 px-lg-3">
+                            <div class="product border p-3">
+                                <div class="product-thumb"><a class="product-thumb__image" href="/shop/product-detail.html">
+                                        <img src="<?=getUrl('public/assets/images/product/product2.jpg')?>" alt="Product image">
+                                    </a>
+                                </div>
+                                <div class="product-content">
+                                    <div class="product-content__header">
+                                        <div class="product-category">eyes</div>
+                                    </div><a class="product-name" href="/shop/product-detail.html">The expert mascaraa</a>
+                                    <div class="product-content__footer">
+                                        <h5 class="product-price--main">$35.00</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-6 col-md-4 col-lg-3 px-1 px-lg-3">
+                            <div class="product border p-3">
+                                <div class="product-thumb"><a class="product-thumb__image" href="/shop/product-detail.html">
+                                        <img src="<?=getUrl('public/assets/images/product/product2.jpg')?>" alt="Product image">
+                                    </a>
+                                </div>
+                                <div class="product-content">
+                                    <div class="product-content__header">
+                                        <div class="product-category">eyes</div>
+                                    </div><a class="product-name" href="/shop/product-detail.html">The expert mascaraa</a>
+                                    <div class="product-content__footer">
+                                        <h5 class="product-price--main">$35.00</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <ul class="paginator">
+                <li class="page-item active">
+                    <button class="page-link">1</button>
+                </li>
+                <li class="page-item">
+                    <button class="page-link">2</button>
+                </li>
+                <li class="page-item">
+                    <button class="page-link"><i class="far fa-angle-right"></i></button>
+                </li>
+            </ul>
+        </div>
+    </div>
+<?php require_once ROOT . "/views/inc/footer.php" ?>

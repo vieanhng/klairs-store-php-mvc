@@ -1,5 +1,6 @@
 
 <?php require_once ROOT ."/views/inc/adminHeader.php" ?>
+
 <div class="">
 
             <div class="row">
@@ -8,7 +9,7 @@
                 <div class="card my-4">
                 
                         <div class="card-header">
-                            <h5 class='text-muted text-center'>Login To Dashboard</h5>
+                            <h5 class='text-muted text-center'>Admin Login</h5>
                         </div>
                         <div class="card-body">
                             <form action="<?php echo URL?>/admins/login" method="POST">

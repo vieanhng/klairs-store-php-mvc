@@ -1,30 +1,33 @@
 <?php 
 
     class Products extends Controller {
-        private $productModel;
+        private Product  $productModel;
         private $categoryModel;
         private $manufactureModel;
         public function __construct(){
-            new Session;
             $this->productModel = $this->model('Product');
             $this->categoryModel = $this->model('Category');
             $this->manufactureModel = $this->model('Manufacture');
         }
 
-        /*>>>>>>>>>>>>>>>>>>>>*/
-        #<--->   index   <--->#
-        /*<<<<<<<<<<<<<<<<<<<<*/
         public function index(){
-            Auth::adminAuth();
-            $data['title1'] = 'All Products';
-            $data['products'] = $this->productModel->getAllPro();
-            $this->view('products.all', $data);
+            $data['title'] = 'Tất cả sản phẩm';
+            $this->view('products.all',$data);
         }
 
+        public function detail($params){
+            $data['title'] = 'Chi tiết sản phẩm';
+            $productId = $params['id'];
+            $product = $this->productModel->getProductById($productId);
+            if($product){
+                $data['product'] = $product;
+            }else {
+                Redirect::to('');
+                exit();
+            }
+            $this->view('products.detail',$data);
+        }
 
-        /*>>>>>>>>>>>>>>>>>>>>*/
-        #<--->   show    <--->#
-        /*<<<<<<<<<<<<<<<<<<<<*/
         public function show($id){
             Auth::adminAuth();
             $data['product'] = $this->productModel->show($id);
@@ -38,10 +41,6 @@
             }
         }
 
-
-        /*>>>>>>>>>>>>>>>>>>>>*/
-        #<--->    add     <--->#
-        /*<<<<<<<<<<<<<<<<<<<<*/
         public function add(){
         
             Auth::adminAuth();
@@ -112,10 +111,6 @@
             }
         }
 
-
-        /*>>>>>>>>>>>>>>>>>>>>*/
-        #<--->   edit    <--->#
-        /*<<<<<<<<<<<<<<<<<<<<*/
         public function edit($id){
             Auth::adminAuth();
             $data['title1'] = 'Edit Product';
@@ -130,14 +125,9 @@
             }
         }
 
-
-        /*>>>>>>>>>>>>>>>>>>>>*/
-        #<--->   update   <--->#
-        /*<<<<<<<<<<<<<<<<<<<<*/
         public function update($id){
         
             Auth::adminAuth();
-            Csrf::CsrfToken();
             $data['title1'] = 'Edit Product';
             if($_SERVER['REQUEST_METHOD']=='POST' && $_POST['editProduct']){
                 $name = $_POST['name'];
@@ -245,7 +235,6 @@
         /*<<<<<<<<<<<<<<<<<<<<*/
         public function delete($id){
             Auth::adminAuth();
-            Csrf::CsrfToken();
             Session::set('success', 'Item has been deleted');
             $delete =  $this->productModel->delete($id);
             if($delete){
@@ -321,9 +310,6 @@
         }
 
 
-        /*>>>>>>>>>>>>>>>>>>>>*/
-        #<---> search <--->#
-        /*<<<<<<<<<<<<<<<<<<<<*/
         public function search(){
             Auth::adminAuth();
             $data['title1'] = 'All Products';

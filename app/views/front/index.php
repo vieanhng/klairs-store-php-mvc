@@ -20,20 +20,6 @@
                     </div>
                 </div>
             </div>
-            <div class="slider__carousel__item slider-1">
-                <div class="container">
-                    <div class="slider-background"><img class="slider-background"
-                                                        src="public/assets/images/slider/01.jpg"
-                                                        alt="Slider background"/></div>
-                </div>
-            </div>
-            <div class="slider__carousel__item slider-1">
-                <div class="container">
-                    <div class="slider-background"><img class="slider-background"
-                                                        src="public/assets/images/slider/01.jpg"
-                                                        alt="Slider background"/></div>
-                </div>
-            </div>
         </div>
     </div>
     <div class="category-one">
@@ -142,41 +128,6 @@
                         src="public/assets/images/instagram/InstagramTwo/5.jpg" alt="Instagram image"/></a><a
                     class="slider-item" href="https://www.instagram.com/klairs.vietnam/"><img
                         src="public/assets/images/instagram/InstagramTwo/6.jpg" alt="Instagram image"/></a>
-        </div>
-    </div>
-    <div class="drawer drawer-right slide" id="mobile-menu-drawer" tabindex="-1" role="dialog" aria-labelledby="drawer-demo-title" style="display: none;" aria-hidden="true">
-        <div class="drawer-content drawer-content-scrollable" role="document">
-            <div class="drawer-body">
-                <div class="cart-sidebar">
-                    <div class="cart-items__wrapper">
-                        <div class="navigation-sidebar">
-                            <div class="search-box">
-                                <form>
-                                    <input type="text" placeholder="Nhập thông tin tìm kiếm...">
-                                    <button><img src="public/assets/images/header/search-icon.png" alt="Search icon"></button>
-                                </form>
-                            </div>
-                            <div class="navigator-mobile">
-                                <ul>
-                                    <li><a href="services.html">Trang chủ</a></li>
-                                    <li class="relative"><a class="dropdown-menu-controller" href="#">Sản phẩm<span class="dropable-icon"><i class="fas fa-angle-down"></i></span></a>
-                                        <ul class="dropdown-menu" style="display: none;">
-                                            <li><a href="homepages/homepage1.html">Beauty Salon</a></li>
-                                            <li><a href="homepages/homepage2.html">Makeup Salon</a></li>
-                                            <li><a href="homepages/homepage3.html">Natural Shop</a></li>
-                                            <li><a href="homepages/homepage4.html">Spa Shop</a></li>
-                                            <li><a href="homepages/homepage5.html">Mask Shop</a></li>
-                                            <li><a href="homepages/homepage6.html">Skincare Shop</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="services.html">Giới thiệu</a></li>
-                                    <li><a href="contact.html">Liên hệ</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 

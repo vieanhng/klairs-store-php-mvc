@@ -3,6 +3,7 @@
     ini_set('display_errors', '1');
 
     require_once 'config/config.php';
+    require_once 'config/rewrite_url.php';
     require_once 'helpers/errors.php';
     require_once 'helpers/session.php';
     require_once 'helpers/redirect.php';

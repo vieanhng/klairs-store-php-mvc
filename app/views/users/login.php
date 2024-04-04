@@ -2,7 +2,7 @@
 <?php require_once ROOT ."/views/inc/header.php" ?>
 <div class="breadcrumb">
     <div class="container">
-        <h2>Login</h2>
+        <h2>Đăng nhập</h2>
     </div>
 </div>
 <div class="container ">
@@ -25,4 +25,4 @@
     </div>
 </div>
 
-<?php require_once ROOT ."/views/inc/footer.php" ?>
+<?php //require_once ROOT ."/views/inc/footer.php" ?>

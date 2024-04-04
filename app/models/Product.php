@@ -4,7 +4,7 @@
         private $db;
 
         public function __construct(){
-            $this->db = new Database();
+            $this->db = Database::getInstance();
         }
 
 
@@ -28,6 +28,18 @@
            }else {
                return false;
            }
+        }
+
+        public function getProductById($id){
+            $this->db->query("SELECT sp.* FROM san_pham sp
+            WHERE ma_sp=:ma_sp");
+            $this->db->bind(':ma_sp',$id);
+            $products = $this->db->single();
+            if($products){
+                return $products;
+            }else {
+                return false;
+            }
         }
 
 

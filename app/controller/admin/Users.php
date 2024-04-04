@@ -1,10 +1,6 @@
 <?php
 
 class Users extends Controller {
-
-    /*>>>>>>>>>>>>>>>>>>>>*/
-    #<---> construct  <--->#
-    /*<<<<<<<<<<<<<<<<<<<<*/
     private $adminModel;
     private $vkey ;
     public function __construct(){
@@ -17,10 +13,6 @@ class Users extends Controller {
         return $this->dashboard();
     }
 
-
-    /*>>>>>>>>>>>>>>>>>>>>*/
-    #<--->   login    <--->#
-    /*<<<<<<<<<<<<<<<<<<<<*/
     public function login(){
         $data['title1'] = 'Admin Login';
         Auth::adminGuest();
@@ -58,15 +50,10 @@ class Users extends Controller {
             }
 
         }else {
-            $this->view('admins.login',$data);
+            $this->view('admin.login',$data);
         }
     }
 
-
-
-    /*>>>>>>>>>>>>>>>>>>>>*/
-    #<--->   logout   <--->#
-    /*<<<<<<<<<<<<<<<<<<<<*/
     public function logout(){
         Auth::adminAuth();
         Session::clear('admin_name');
@@ -74,10 +61,6 @@ class Users extends Controller {
         Redirect::to('admins/login');
     }
 
-
-    /*>>>>>>>>>>>>>>>>>>>>*/
-    #<---> dashboard  <--->#
-    /*<<<<<<<<<<<<<<<<<<<<*/
     public function dashboard(){
         Auth::adminAuth();
         $data['title1'] = 'Dashboard';

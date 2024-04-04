@@ -36,19 +36,14 @@ class Session{
 
     public static function success($msg){
         if(isset($_SESSION[$msg])){
-            echo '<div class="messages">
-            <button class="btn btn-success m-2 btn-sm" style="border-radius:50%">
-            <i class="fa fa-check fa-2x"></i></button>
-            <span class= "text-success mt-2">'.$_SESSION[$msg].'</span></div>';
+            echo "FuiToast.success('".$_SESSION[$msg]."');";
             unset($_SESSION[$msg]);
         }
     }
 
     public static function danger($msg){
         if(isset($_SESSION[$msg])){
-            echo '<div class="messages"><button class="btn btn-danger m-2 btn-sm" style="border-radius:50%">
-            <i class="fa fa-times fa-2x"></i></button>
-            <span class= "text-danger mt-2">'.$_SESSION[$msg].'</span></div>';
+            echo "FuiToast.error('".$_SESSION[$msg]."');";
             unset($_SESSION[$msg]);
         }
      }

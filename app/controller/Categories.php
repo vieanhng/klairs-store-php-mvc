@@ -3,16 +3,13 @@
     class Categories extends Controller {
         private $categoryModel;
         public function __construct(){
-            new Session;
             $this->categoryModel = $this->model('Category');
         }
 
-        /*>>>>>>>>>>>>>>>>>>>>*/
-        #<--->   index   <--->#
-        /*<<<<<<<<<<<<<<<<<<<<*/
-        public function index(){
-            Auth::adminAuth();
-            $data['title1'] = 'All Categories';
+        public function category($category){
+            Auth::userAuth();
+
+            $data['title'] = 'All Categories';
             $data['categories'] = $this->categoryModel->getAllCat();
             $this->view('categories.all', $data);
         }

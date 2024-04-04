@@ -3,13 +3,12 @@
     class Pages extends Controller {
 
 
-        private $categoryModel;
+        private Category $categoryModel;
         private $manufactureModel;
         private $productModel;
 
 
         public function __construct(){
-            new Session;
             $this->categoryModel = $this->model('Category');
             $this->manufactureModel = $this->model('Manufacture');
             $this->productModel = $this->model('Product');
@@ -17,10 +16,10 @@
        
 
         public function index(){
-            $data['title'] = 'Home';
-            $data['categories'] = $this->categoryModel->getAllCat(1);
-            $data['manufactures'] = $this->manufactureModel->getAllMan(1);
-            $data['products'] = $this->productModel->getAllPro(1);
+            $data['title'] = 'Trang chủ';
+            $data['categories'] = $this->categoryModel->getCategories();
+            //$data['manufactures'] = $this->manufactureModel->getAllMan(1);
+            //$data['products'] = $this->productModel->getAllPro(1);
             $this->view('front.index', $data);
         }
 
@@ -87,6 +86,11 @@
                 Redirect::to('home');
             }
             
+        }
+
+        public function contactUs(){
+            $data['title'] = 'Contact Us';
+            $this->view('front.contactus',$data);
         }
 
     }

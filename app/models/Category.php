@@ -3,11 +3,12 @@
     class Category extends Controller{
         private $db;
 
+
         public function __construct(){
-            $this->db = new Database();
+            $this->db = Database::getInstance();
         }
 
-        public function getAllCat($active=''){
+        public function getCategoryProductCollection(){
             if($active==''){
                 $sql = "";
             }else {
@@ -22,6 +23,12 @@
             }else {
                 return false;
             }
+        }
+
+        public function getCategories(){
+            $this->db->query("SELECT * FROM danh_muc");
+            $result = $this->db->resultSet();
+            return $result;
         }
 
         public function search($searched){

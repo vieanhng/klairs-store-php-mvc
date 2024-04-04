@@ -1,9 +1,7 @@
 <?php
-namespace controller;
 
     class About extends Controller {
         public function __construct(){
-            new Session;
         }
 
         public function index(){
