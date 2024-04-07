@@ -38,17 +38,7 @@
 <div class="container">
     <div class="footer-one__header">
         <div class="footer-one__header__logo"><a href="/homepages/homepage1"><img src="<?=URL?>public/assets/images/logonentrang.jpg" alt="Logo"/></a></div>
-        <div class="footer-one__header__newsletter"><span>Đăng ký ngay:</span>
-            <div class="footer-one-newsletter">
-                <div class="subscribe-form">
-                    <div class="mc-form">
-                        <input type="text" placeholder="Điền email của bạn"/>
-                        <button class="btn "><i class="fas fa-paper-plane"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <div class="footer-one__header__social">
             <div class="social-icons -border">
                 <ul>
@@ -102,7 +92,7 @@
     <div class="container">
         <div class="footer-one__footer__wrapper">
             <p>© Copyright 2024 klairsvietnam</p>
-            <a href="contact.html">Liên Hệ</a>
+<!--            <a href="contact.html">Liên Hệ</a>-->
         </div>
     </div>
 </div>
@@ -118,5 +108,7 @@
 <script src="<?=URL?>public/assets/js/jquery.countdown.min.js"></script>
 <script src="<?=URL?>public/assets/js/main.min.js"></script>
 <script src="<?=URL?>public/assets/js/header/header.js"></script>
+<script src="<?=URL?>public/assets/js/pagination/javascript/zebra_pagination.js"></script>
+
 </body>
 </html>

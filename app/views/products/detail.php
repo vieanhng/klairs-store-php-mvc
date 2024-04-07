@@ -61,6 +61,7 @@ $product = $data['product'];
             </div>
         </div>
     </div>
+
 <?php require_once ROOT . "/views/inc/footer.php" ?>
 
 <script>

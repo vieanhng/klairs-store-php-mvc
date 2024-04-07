@@ -29,8 +29,17 @@
                                 <input type="text" name="phone" placeholder="Số điện thoại"
                                                                 value="<?= $data['user']->dien_thoai ?>"/></div>
                             <div class="input-validator">
+                                Đổi mật khẩu
+                            </div>
+                            <div class="input-validator">
                                 <input class="form-control" type="password"
-                                                                placeholder="Nhập mật khẩu mới" name="password" autocomplete="false"/></div>
+                                                                placeholder="Nhập mật khẩu" name="oldpassword" autocomplete="false"/>
+                            </div>
+
+                            <div class="input-validator">
+                                <input class="form-control" type="password"
+                                                                placeholder="Nhập mật khẩu mới" name="password" autocomplete="false"/>
+                            </div>
                             <div class="input-validator">
                                 <input class="form-control" type="password"
                                                                 placeholder="Xác nhận mật khẩu mới"

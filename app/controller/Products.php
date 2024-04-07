@@ -12,11 +12,19 @@
 
         public function index(){
             $data['title'] = 'Tất cả sản phẩm';
+            $data['search'] = '';
+            if(isset($_GET['search'])){
+                $data['search'] = $_GET['search'];
+                $data['title'] = "Kết quả tìm kiếm cho ". "\"".$data["search"]."\"";
+            }
+
+
+            $data['products'] = $this->productModel->getAllPro($data['search']);
             $this->view('products.all',$data);
         }
 
         public function detail($params){
-            $data['title'] = 'Chi tiết sản phẩm';
+            $data['title'] = 'Thông tin sản phẩm';
             $productId = $params['id'];
             $product = $this->productModel->getProductById($productId);
             if($product){

@@ -28,6 +28,36 @@
            }
         }
 
+        public function getCustomerOrderHistory($customerId){
+            /**
+             * Mã đơn hàng, Ngày đặt, Thành tiền, Trạng thái
+             */
+            $this->db->query("SELECT * from don_hang where ma_kh = :ma_kh");
+            $this->db->bind(":ma_kh",$customerId);
+            $orders = $this->db->resultSet();
+            if($orders){
+                return $orders;
+            }else {
+                return false;
+            }
+        }
+
+        public function getOrderByOrderId($orderId){
+            /**
+             * Mã đơn hàng, Ngày đặt, Thành tiền, Trạng thái
+             */
+            $this->db->query("select * from don_hang dh inner join ct_don_hang ctdh on dh.ma_dh = ctdh.ma_dh where dh.ma_dh = :madh");
+            $this->db->bind(":madh",$orderId);
+            $orders = $this->db->single();
+            if($orders){
+                return $orders;
+            }else {
+                return false;
+            }
+        }
+
+
+
         public function addToShipping($name,$email,$mobile,$address,$city){
             $this->db->query("INSERT INTO shipping 
             (full_name,email,mobile,address,city)

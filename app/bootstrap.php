@@ -8,13 +8,13 @@
     require_once 'helpers/session.php';
     require_once 'helpers/redirect.php';
     require_once 'helpers/auth.php';
+    require_once 'helpers/Zebra_Pagination.php';
 
     require_once 'helpers/csrf.php';
     require_once 'helpers/ultils.php';
 
     new Redirect;
     new Auth;
-    new Csrf();
 
     spl_autoload_register(function($class){
         require_once 'libs/'.$class.'.php';

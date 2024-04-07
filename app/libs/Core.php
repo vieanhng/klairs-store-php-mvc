@@ -9,6 +9,7 @@ class Core {
     public function __construct(){
 
         $url = $this->getUrl();
+        unset($_GET['url']);
         $isAdmin = isset($url[0]) && strtolower((string)$url[0]) === "admin";
         if(isset($url[0]) && $isAdmin){
             if(file_exists("app/controller/admin/".ucwords((string)$url[1]).".php")){

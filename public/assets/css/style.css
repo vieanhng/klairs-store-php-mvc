@@ -2,7 +2,7 @@ html,
 body {
     padding: 0;
     margin: 0;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Lexend", sans-serif;
     font-weight: normal;
     font-size: 16px;
 }
@@ -2291,10 +2291,10 @@ ul {
     font-size: 0.8125em;
     font-weight: normal;
     line-height: 1;
-    margin-top: 0.9375em;
-    display: block;
-    text-align: right;
-    font-style: italic;
+    /*margin-top: 0.9375em;*/
+    /*display: block;*/
+    /*text-align: right;*/
+    /*font-style: italic;*/
 }
 
 .five-col {
@@ -7530,6 +7530,7 @@ ul {
     font-size: 0.875em;
     font-weight: normal;
     line-height: 1;
+    width: 100%;
 }
 
 .checkout__form .input-validator label span {
@@ -9095,6 +9096,30 @@ ul {
     pointer-events: none;
 }
 
+.pagination {
+    list-style: none;
+}
+
+.pagination .page-item {
+    border-radius: 50px;
+}
+a.page-link {
+    border-radius: 50px;
+    line-height: 34px;
+    width: 3rem;
+    height: 3rem;
+    text-align: center;
+}
+.pagination li {
+    display: inline-block;
+    margin: 0 0.3125em;
+}
+
+.pagination li.active a {
+    background-color: #111;
+    color: #fff;
+}
+
 .page-item:first-child .page-link {
     border-radius: 50px;
 }
@@ -9103,3 +9128,10 @@ ul {
     border-radius: 50px;
 }
 
+.error {
+    color: #5a5c69;
+    font-size: 7rem;
+    position: relative;
+    line-height: 1;
+    width:auto;
+}

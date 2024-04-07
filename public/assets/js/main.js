@@ -468,7 +468,7 @@ const mobileSidebarMenuHandle = () => {
 };
 
 const countDownDale = () => {
-  $("#clock").countdown("2020/10/10", function (event) {
+  $("#clock").countdown("2024/10/10", function (event) {
     var $this = $(this).html(
       event.strftime(
         "" +

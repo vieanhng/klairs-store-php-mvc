@@ -1,8 +1,8 @@
 <?php require_once ROOT . "/views/inc/header.php" ?>
 
 <?php
-$cart = isset($data['cart']) ? $data['cart'] : false;
-$detail = isset($data['cart']) ? $data['detail'] : false;
+$cart = isset($data['cart']['cart']) ? $data['cart']['cart'] : false;
+$detail = isset($data['cart']['detail']) ? $data['cart']['detail'] : false;
 ?>
     <div class="breadcrumb">
         <div class="container">
@@ -61,14 +61,13 @@ $detail = isset($data['cart']) ? $data['detail'] : false;
                                             <td>
                                                 <div class="quantity-controller ">
                                                     <div class="input-validator">
-
-                                                    <input type="number" name="qty_<?=$item->ma_sp?>" value="<?= $item->so_luong?>">
+                                                    <input type="number" class="pd-qty" min="1" name="qty_<?=$item->ma_sp?>" value="<?= $item->so_luong?>">
                                                     </div>
                                                 </div>
                                             </td>
                                             <td><?= formatPrice($item->tong_tien
                                                 )?></td>
-                                            <td><a href="#"><i class="fal fa-times"></i></a></td>
+                                            <td><a href="<?=getUrl('carts/deleteItem/id/'.$item->ma_sp)?>"><i class="fal fa-times"></i></a></td>
                                         </tr>
                                         <?php endforeach;?>
                                         <?php endif;?>
@@ -85,7 +84,7 @@ $detail = isset($data['cart']) ? $data['detail'] : false;
 
                                     </a>
 
-                                    <a href="#" class="btn" id="deleteCart">
+                                    <a href="<?=getUrl('carts/clear')?>" class="btn" id="deleteCart">
                                             <i class="fal fa-trash">
 
                                             </i>Xoá giỏ hàng</a>
@@ -136,6 +135,7 @@ $detail = isset($data['cart']) ? $data['detail'] : false;
         <?php Session::danger('addToCartFail')?>
         <?php Session::success('successDeleteItem')?>
         $('#updateCart').on('click',function () {
+
             const formData = $('#cartForm').serializeArray();
             let formattedData = {cartId:null,items:[]};
             formData.forEach(item => {
@@ -148,7 +148,7 @@ $detail = isset($data['cart']) ? $data['detail'] : false;
                     formattedData.items.push({ id: fields[1], qty: item.value });
                 }
             });
-console.log(JSON.stringify(formattedData));
+
             $.ajax({
                 type: 'POST',
                 url: '<?=getUrl('carts/updateCart')?>',

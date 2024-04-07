@@ -30,10 +30,11 @@
                             <label class="label" for="confirm_password">Nhập lại mật khẩu</label>
                             <input class="mt-3" type="password" name="confirm_password" id="confirm_password" placeholder="Nhập mật khẩu" autocomplete="off" >
                         </div>
-                        <input class="btn -dark" type="submit" id="register-button" value="ĐĂNG KÝ">
+                        <input class="btn -dark" type="submit" style="float: right" id="register-button" value="ĐĂNG KÝ">
                     </form>
                 </div>
             </div>
+            <div class="col-12 text-center mt-5">Đã có tài khoản? <a href="<?=getUrl('users/login')?>">Đăng nhập</a> </div>
         </div>
     </div>
 <?php require_once ROOT ."/views/inc/footer.php" ?>
@@ -64,7 +65,7 @@
             },
             messages: {
                 name: {
-                    required: "Vui lòng nhập họp tên",
+                    required: "Vui lòng nhập họ tên",
                 },
                 email: {
                     required: "Vui lòng nhập địa chỉ email",

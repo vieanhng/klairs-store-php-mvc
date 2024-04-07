@@ -8,15 +8,14 @@
             $this->db = Database::getInstance();
         }
 
-        public function getCategoryProductCollection(){
-            if($active==''){
-                $sql = "";
-            }else {
-                $sql = "WHERE categories.active=$active";
-            }
-            $this->db->query("SELECT categories.*, users.full_name as
-            creator  FROM categories INNER JOIN users ON 
-            categories.cat_user = users.user_id $sql");
+        public function getCategoryProductCollection($ma_danh_muc){
+
+            $this->db->query("SELECT san_pham.ma_sp, ten_sp, don_gia_nhap, don_gia_ban, anh_sp, so_luong, san_pham.mo_ta, danh_muc.ma_danh_muc, ten_danh_muc
+FROM san_pham
+INNER JOIN dm_sp_link ON san_pham.ma_sp = dm_sp_link.ma_sp
+INNER JOIN danh_muc ON danh_muc.ma_danh_muc = dm_sp_link.ma_danh_muc
+WHERE danh_muc.ma_danh_muc = :ma_danh_muc");
+            $this->db->bind(":ma_danh_muc",$ma_danh_muc);
             $categories = $this->db->resultSet();
             if($categories){
                 return $categories;
@@ -28,6 +27,13 @@
         public function getCategories(){
             $this->db->query("SELECT * FROM danh_muc");
             $result = $this->db->resultSet();
+            return $result;
+        }
+
+        public function getCategoryById($ma){
+            $this->db->query("SELECT * FROM danh_muc WHERE ma_danh_muc = :ma");
+            $this->db->bind(":ma",$ma);
+            $result = $this->db->single();
             return $result;
         }
 

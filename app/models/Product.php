@@ -8,18 +8,14 @@
         }
 
 
-        public function getAllPro($active=''){
-            if($active==''){
-                $act = "";
-            }else {
-                $act = "WHERE products.active=$active";
+        public function getAllPro($search = ''){
+            $act = '';
+            if(!empty($search)){
+                $search = strtolower($search);
+                $act = "WHERE sp.ten_sp LIKE '%$search%'";
             }
             
-            $this->db->query("SELECT products.*, users.full_name as creator,
-            categories.cat_name,manufactures.man_name  FROM products
-            INNER JOIN users ON products.user = users.user_id
-            INNER JOIN categories ON products.cat = categories.cat_id
-            INNER JOIN manufactures ON products.man = manufactures.man_id
+            $this->db->query("SELECT * from san_pham sp 
             $act 
             ");
             $products = $this->db->resultSet();

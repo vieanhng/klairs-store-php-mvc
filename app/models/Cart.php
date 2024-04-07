@@ -59,18 +59,19 @@ where ma_gio_hang=:cartId");
 
                     if($available > $item->so_luong + $qty){
                         $this->updateQty($maGioHang,$productId,$item->so_luong + $qty);
+                        return true;
                     } else{
-                        return false;
-                    }
-                }else {
-                    if($available > $qty){
-                        $this->addNewItem($maGioHang,$productId,$qty,$donGia,$tongTien);
-                    }else{
                         return false;
                     }
                 }
             }
-            return true;
+            if($available > $qty){
+                $this->addNewItem($maGioHang,$productId,$qty,$donGia,$tongTien);
+                return true;
+            }else{
+                return false;
+            }
+
         }
 
         private function addNewItem($maGioHang,$productId,$qty,$donGia,$tongTien){
@@ -129,23 +130,8 @@ where ma_gio_hang=:cartId");
             $this->db->execute();
         }
 
-        public function addOne($pro_id){
-            $this->db->query("UPDATE cart SET qty=qty + 1
-            WHERE product = :pro_id AND user = :user");
-            $this->db->bind(':pro_id',$pro_id);
-            $this->db->bind(':user',Session::name('user_id'));
-            $this->db->execute();
-        }
 
-        public function addnew($pro_id,$user_id,$price){
-            $this->db->query("INSERT INTO 
-            cart (product,user,qty,price)
-            VALUES (:product,:user_id,1,:price)");
-            $this->db->bind(':product',$pro_id);
-            $this->db->bind(':user_id',$user_id);
-            $this->db->bind(':price',$price);
-            $this->db->execute();
-        }
+
 
 
 
@@ -160,15 +146,16 @@ where ma_gio_hang=:cartId");
             return $this->db->rowCount();
         }
 
-        public function delete($id){
-            $this->db->query("DELETE FROM cart WHERE cart_id=:id");
-            $this->db->bind(':id',$id);
+        public function deleteItem($productId,$cartId){
+            $this->db->query("DELETE FROM ct_gio_hang WHERE ma_gio_hang=:cart_id AND ma_sp = :ma_sp");
+            $this->db->bind(':cart_id',$cartId);
+            $this->db->bind(':ma_sp',$productId);
             return $this->db->execute();
         }
 
         public function clear(){
-            $this->db->query("DELETE FROM cart WHERE user=:user");
-            $this->db->bind(':user',Session::name('user_id'));
+            $this->db->query("DELETE FROM gio_hang WHERE ma_kh=:ma_kh");
+            $this->db->bind(':ma_kh',Auth::getCurrentCustomerId());
             return $this->db->execute();
         }
 

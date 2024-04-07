@@ -11,12 +11,16 @@
     <link rel="shortcut icon" type="image/png" href="<?=URL?>public/assets/images/logonentrang.jpg"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lelinh014756/fui-toast-js@master/assets/css/toast@1.0.1/fuiToast.min.css">
     <link rel="stylesheet" href="<?=URL?>public/assets/css/bootstrap.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href="<?=URL?>public/assets/admin/bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="<?=URL?>public/assets/css/slick.min.css"/>
     <link rel="stylesheet" href="<?=URL?>public/assets/css/fontawesome.css"/>
     <link rel="stylesheet" href="<?=URL?>public/assets/css/jquery.modal.min.css"/>
     <link rel="stylesheet" href="<?=URL?>public/assets/css/bootstrap-drawer.min.css"/>
+
     <link rel="stylesheet" href="<?=URL?>public/assets/css/style.css"/>
     <script>
         window.BASE_URL = '<?= URL ?>'
@@ -48,7 +52,7 @@
                         </li>
 
 
-                    <li class="relative"><a href="about.html">Giới thiệu</a></li>
+                    <li class="relative"><a href="<?=getUrl('pages/aboutus')?>">Giới thiệu</a></li>
 
 
                     <li class="relative"><a href="<?=getUrl('pages/contactus')?>">Liên hệ</a></li>
@@ -61,7 +65,10 @@
                         <line x1="21" y1="21" x2="15" y2="15"></line>
                     </svg></a>
                 <div class="search-box">
-                    <form><input type="text" placeholder="Tìm kiếm sản phẩm?" name="search" /><button><img src="header/search-icon.png" alt="Search icon" /></button></form>
+                    <form action="<?=getUrl('allproducts')?>">
+                        <input type="text" placeholder="Tìm kiếm sản phẩm?" name="search" />
+                        <button><img src="header/search-icon.png" alt="Search icon" /></button>
+                    </form>
                 </div>
                 <a class="menu-icon" href="<?=getUrl('carts')?>" style="text-decoration: none;color: #000000;margin-right: 0px;">
                     <div class="menu-cart" style="margin-right: 15px;"><svg class="icon icon-tabler icon-tabler-shopping-cart" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" style="width: 26px;height: 26px;color: rgb(255,255,255);">
@@ -94,28 +101,12 @@
                             <li class="dropdown-item"><a href="<?=getUrl('users/register')?>">Đăng ký</a></li>
                         <?php else:?>
                             <li class="dropdown-item"><a href="<?=getUrl('users/profile')?>">Thông tin tài khoản</a></li>
+                            <li class="dropdown-item"><a href="<?=getUrl('users/orderHistory')?>">Lịch sử mua hàng</a></li>
                             <li class="dropdown-item"><a href="<?=getUrl('users/logout')?>">Đăng xuất</a></li>
                         <?php endif;?>
                         </ul>
                     </div>
                 </div>
-                <ul class="menu-icon">
-                    <li class="relative">
-                        <div class="menu-icon user-icon" href style="color: rgb(255,255,255);">
-                            <ul class="dropdown-menu" style="right: 50px;width: 250px;">
-                                <ul class="dropdown-menu__col" style="opacity: 1;">
-                                    <?php if(!Auth::isLoggedIn()):?>
-                                    <li style="opacity: 1;"><a href="<?=getUrl('users/login')?>">Đăng nhập</a></li>
-                                    <li style="opacity: 1;"><a href="<?=getUrl('users/register')?>">Đăng ký</a></li>
-                                    <?php else:?>
-                                    <li style="opacity: 1;"><a href="<?=getUrl('users/profile')?>">Thông tin tài khoản</a></li>
-                                    <li><a href="<?=getUrl('users/logout')?>">Đăng xuất</a></li>
-                                    <?php endif;?>
-                                </ul>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
                 <a class="menu-icon -navbar" href="#">
                     <div class="bar"></div>
                     <div class="bar"></div>

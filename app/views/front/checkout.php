@@ -2,149 +2,110 @@
 
 <div class="breadcrumb">
     <div class="container">
-        <h2>Checkout</h2>
-        <ul><li>Home</li><li>Shop</li><li class="active">Checkout</li></ul>
+        <h2><?=$data['title']?></h2>
     </div>
 </div>
 <div class="shop">
     <div class="container">
         <div class="checkout">
             <div class="container">
+                <form action="<?=getUrl('checkout/placeorder')?>" method="post">
                 <div class="row">
                     <div class="col-12 col-lg-8">
-                        <form action="">
                             <div class="checkout__form">
                                 <div class="checkout__form__shipping">
-                                    <h5 class="checkout-title">Shipping address</h5>
+                                    <h5 class="checkout-title">Thông tin giao hàng</h5>
                                     <div class="row">
-                                        <div class="col-12 col-md-6">
+                                        <div class="col-12">
                                             <div class="input-validator">
-                                                <label>First name <span>*</span>
-                                                    <input type="text" name="firstName">
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-6">
-                                            <div class="input-validator">
-                                                <label>Last name<span>*</span>
-                                                    <input type="text" name="lastName">
+                                                <label>Họ tên <span>*</span>
+                                                    <input type="text" name="name" placeholder="Nhập họ tên">
                                                 </label>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="input-validator">
-                                                <label>Country<span>*</span>
-                                                    <input type="text" name="country">
+                                                <label>Số điện thoại<span>*</span>
+                                                    <input type="text" name="phone" placeholder="Nhập số điện thoại">
                                                 </label>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="input-validator">
-                                                <label>Address <span>*</span>
-                                                    <input type="text" name="streetAddress" placeholder="Steet address">
-                                                    <input type="text" name="apartment" placeholder="Apartment, suite, unite ect ( optinal )">
+                                                <label>Địa chỉ <span>*</span>
+                                                    <input type="text" name="address" placeholder="Nhập địa chỉ">
                                                 </label>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="input-validator">
-                                                <label>Town/City <span>*</span>
-                                                    <input type="text" name="town">
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="input-validator">
-                                                <label>Country/State <span>*</span>
-                                                    <input type="text" name="state">
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="input-validator">
-                                                <label>Postcode/ZIP <span>*</span>
-                                                    <input type="text" name="zip">
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="input-validator">
-                                                <label>Order note
-                                                    <input type="text" name="note" placeholder="Note about your order, e.g, special noe for delivery">
+                                                <label>Ghi chú
+                                                    <input type="text" name="note" placeholder="Ghi chú đơn hàng">
                                                 </label>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </form>
+
                     </div>
                     <div class="col-12 col-lg-4">
                         <div class="row">
                             <div class="col-12 col-md-6 col-lg-12 ml-auto">
                                 <div class="checkout__total">
-                                    <h5 class="checkout-title">Your order</h5>
-                                    <form class="checkout__total__coupon">
-                                        <h5>Coupon code</h5>
-                                        <div class="input-validator">
-                                            <input type="text" placeholder="Your code here" name="coupon">
-                                        </div><a class="btn -dark" href="#">apply</a>
-                                    </form>
+                                    <h5 class="checkout-title">Đơn hàng</h5>
                                     <div class="checkout__total__price">
-                                        <h5>Product</h5>
+                                        <h5>Sản phẩm</h5>
                                         <table>
                                             <colgroup>
                                                 <col style="width: 70%">
                                                 <col style="width: 30%">
                                             </colgroup>
                                             <tbody>
+                                            <?php foreach ($data['cart']['detail'] as $item): ?>
                                             <tr>
-                                                <td><span>01 x </span>The expert mascaraa
+                                                <td><span><?=$item->so_luong?> x </span><?=$item->ten_sp?>
                                                 </td>
-                                                <td>$35.00</td>
+                                                <td><?=formatPrice($item->don_gia_ban)?></td>
                                             </tr>
-                                            <tr>
-                                                <td><span>01 x </span>Velvet Melon High Intensity
-                                                </td>
-                                                <td>$38.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td><span>01 x </span>Leather shopper bag
-                                                </td>
-                                                <td>$35.00</td>
-                                            </tr>
+                                            <?php endforeach;?>
                                             </tbody>
                                         </table>
                                         <div class="checkout__total__price__total-count">
                                             <table>
                                                 <tbody>
                                                 <tr>
-                                                    <td>Subtotal</td>
-                                                    <td>$108.00</td>
+                                                    <td>Giá trị giỏ hàng</td>
+                                                    <td><?= formatPrice($data['cart']['cart']->thanh_tien)?></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Total</td>
-                                                    <td>$108.00</td>
+                                                    <td>Vận chuyển</td>
+                                                    <td><?= formatPrice(SHIPPING_COST)?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tổng đơn hàng</td>
+                                                    <td><?= formatPrice($data['cart']['cart']->thanh_tien + SHIPPING_COST)?></td>
                                                 </tr>
                                                 </tbody>
                                             </table>
                                         </div>
                                         <div class="checkout__total__price__payment">
                                             <label class="checkbox-label" for="payment">
-                                                <input id="payment" type="checkbox" name="payment">Cheque payment
+                                                <input id="payment" type="radio" name="payment">Thanh toán khi nhận hàng
                                             </label>
-                                            <label class="checkbox-label" htmlfor="paypal">
-                                                <input id="paypal" type="checkbox" name="paypal">PayPal
+                                            <label class="checkbox-label" htformlfor="payment">
+                                                <input id="payment" type="radio" name="payment">Thanh toán online
                                             </label>
                                         </div>
                                     </div>
-                                    <button class="btn -red">Place order
+                                    <button class="btn -dark">Thanh toán
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                </form>
             </div>
         </div>
     </div>

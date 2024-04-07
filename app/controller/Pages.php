@@ -89,8 +89,13 @@
         }
 
         public function contactUs(){
-            $data['title'] = 'Contact Us';
+            $data['title'] = 'Liên hệ';
             $this->view('front.contactus',$data);
+        }
+
+        public function aboutus(){
+            $data['title'] = 'Về chúng tôi';
+            $this->view('front.about',$data);
         }
 
     }

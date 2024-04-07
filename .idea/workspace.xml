@@ -4,61 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f031c67c-ead4-45fb-b911-4820909f0aa3" name="Changes" comment="">
+    <list default="true" id="f031c67c-ead4-45fb-b911-4820909f0aa3" name="Changes" comment="Update huge project">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/bootstrap.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/bootstrap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/About.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/About.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controller/Carts.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/Carts.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controller/Categories.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/Categories.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/Checkout.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/Checkout.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controller/Pages.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/Pages.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controller/Products.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/Products.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controller/Users.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/Users.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/admin/Users.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/admin/Users.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/helpers/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/helpers/session.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/session.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/helpers/ultils.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/ultils.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/libs/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/libs/Controller.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/libs/Core.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/libs/Core.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/libs/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/libs/Database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Admin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/Cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Cart.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Manufacture.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Manufacture.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Order.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/admin/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/dashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/admin/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/front/about.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/front/about.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/front/cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/front/cart.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/front/checkout.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/front/checkout.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/front/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/front/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/inc/adminFooter.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/inc/adminFooter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/inc/adminHeader.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/inc/adminHeader.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/inc/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/inc/footer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/inc/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/inc/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/inc/sidebar.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/inc/sidebar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/products/all.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/products/all.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/products/detail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/products/detail.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/users/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/users/login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/users/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/users/profile.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/users/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/users/register.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/fa-brands-400.eot" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/fonts/fa-brands-400.eot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/fa-brands-400.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/fonts/fa-brands-400.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/fa-brands-400.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/fonts/fa-brands-400.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/fa-brands-400.woff" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/fonts/fa-brands-400.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/fa-brands-400.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/fonts/fa-brands-400.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/fa-regular-400.eot" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/fonts/fa-regular-400.eot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/fa-regular-400.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/fonts/fa-regular-400.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/fa-regular-400.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/fonts/fa-regular-400.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/fa-regular-400.woff" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/fonts/fa-regular-400.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/fa-regular-400.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/fonts/fa-regular-400.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/fa-solid-900.eot" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/fonts/fa-solid-900.eot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/fa-solid-900.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/fonts/fa-solid-900.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/fa-solid-900.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/fonts/fa-solid-900.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/fa-solid-900.woff" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/fonts/fa-solid-900.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/fonts/fa-solid-900.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/fonts/fa-solid-900.woff2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/main.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/main.min.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,6 +72,7 @@
     <include_path>
       <path value="$PROJECT_DIR$/vendor/phpmailer/phpmailer" />
       <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/payos/payos" />
     </include_path>
   </component>
   <component name="ProjectId" id="2eDlw7VJO1pn6vKWjP6YxVWRYXN" />
@@ -112,7 +89,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/andy/Documents/TLHT/TKWEB/php/klairs-store-php-mvc/app/views/products",
+    "last_opened_file_path": "/Users/andy/Documents/TLHT/TKWEB/php/klairs-store-php-mvc/app/views/front",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -122,11 +99,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/views/front" />
+      <recent name="$PROJECT_DIR$/public/assets/js/pagination" />
       <recent name="$PROJECT_DIR$/app/views/products" />
       <recent name="$PROJECT_DIR$/public/assets/images/product" />
       <recent name="$PROJECT_DIR$/public/assets/admin" />
-      <recent name="$PROJECT_DIR$/public/assets/js" />
-      <recent name="$PROJECT_DIR$/public/assets/css" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -144,8 +121,21 @@
       <workItem from="1711506775753" duration="3160000" />
       <workItem from="1711620250603" duration="3906000" />
       <workItem from="1711734225310" duration="11000" />
-      <workItem from="1712078453851" duration="53550000" />
+      <workItem from="1712078453851" duration="53948000" />
+      <workItem from="1712241804251" duration="7708000" />
+      <workItem from="1712294070693" duration="15874000" />
+      <workItem from="1712383079424" duration="1886000" />
+      <workItem from="1712390517760" duration="2068000" />
+      <workItem from="1712413331846" duration="11062000" />
     </task>
+    <task id="LOCAL-00001" summary="Update huge project">
+      <created>1712230791563</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1712230791563</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -174,13 +164,37 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Update huge project" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update huge project" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/vendor/stefangabos/zebra_pagination/Zebra_Pagination.php</url>
+          <line>107</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/vendor/stefangabos/zebra_pagination/Zebra_Pagination.php</url>
+          <line>888</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/models/Product.php</url>
+          <line>12</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/views/products/all.php</url>
+          <line>5</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/controller/Users.php</url>
-          <line>96</line>
-          <option name="timeStamp" value="11" />
+          <line>184</line>
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -211,6 +225,8 @@
         <watch expression="!empty($url[2]) &amp;&amp; !empty($url[3])" />
         <watch expression="$currentCart['cart']-&gt;ma_gio_hang" />
         <watch expression="$this-&gt;cartModel-&gt;addToCart($productId,$qty)" />
+        <watch expression="$this-&gt;_properties['variable_name']" />
+        <watch expression="$this-&gt;_properties['base_url_query']" />
       </configuration>
     </watches-manager>
   </component>

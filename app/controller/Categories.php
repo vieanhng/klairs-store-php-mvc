@@ -1,17 +1,17 @@
 <?php 
 
     class Categories extends Controller {
-        private $categoryModel;
+        private Category $categoryModel;
         public function __construct(){
             $this->categoryModel = $this->model('Category');
         }
 
-        public function category($category){
-            Auth::userAuth();
-
-            $data['title'] = 'All Categories';
-            $data['categories'] = $this->categoryModel->getAllCat();
-            $this->view('categories.all', $data);
+        public function category($param){
+            $categryId = $param['cat'];
+            $category = $this->categoryModel->getCategoryById($categryId);
+            $data['title'] = $category->ten_danh_muc;
+            $data['products'] = $this->categoryModel->getCategoryProductCollection($categryId);
+            $this->view('products.all', $data);
         }
 
 

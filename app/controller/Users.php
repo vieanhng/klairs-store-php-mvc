@@ -6,10 +6,13 @@ class Users extends Controller
     private $userModel;
     private $cartModel;
 
+    private Order $orderModel;
+
     public function __construct()
     {
         $this->userModel = $this->model('User');
         $this->cartModel = $this->model('Cart');
+        $this->orderModel = $this->model("Order");
         $this->email = $this->model('SendEmailModel');
     }
 
@@ -20,7 +23,7 @@ class Users extends Controller
     public function register()
     {
         Auth::userGuest();
-        $data['title1'] = 'Register';
+        $data['title'] = 'Đăng ký';
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $fullname = filter_var($_POST['name'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
@@ -30,26 +33,21 @@ class Users extends Controller
                 $password2 = $_POST['confirm_password'];
 
                 if (empty($fullname)) {
-                    $data['errName'] = 'Name Must Has Value.';
+                    $data['errName'] = 'Họ tên là bắt buộc';
                 }
 
                 if (empty($email)) {
-                    $data['errEmail'] = 'Email Must Has Value.';
+                    $data['errEmail'] = 'Email là bắt buộc';
                 } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    $data['errEmail'] = 'Enter Valid Email';
+                    $data['errEmail'] = 'Nhập đúng định dạng email';
                 } elseif ($this->userModel->findUserByEmail($email)) {
-                    $data['errEmail'] = 'This Email is Already Exists';
+                    $data['errEmail'] = 'Email đã tồn tại';
                 }
-
-                if (strlen($password) < 1) {
-                    $data['errPassword'] = "Your Password Must Contain At Least 8 Characters!";
-                }
-
 
                 if ($password != $password2) {
-                    $data['errPassword2'] = 'Password not match';
+                    $data['errPassword'] = 'Xác nhận mật khẩu không khớp';
                 }
-                if (empty($data['errEmail']) && empty($data['errName']) && empty($data['errPassword']) && empty($data['errPassword2'])) {
+                if (empty($data['errEmail']) && empty($data['errName']) && empty($data['errPassword'])) {
                     $this->userModel->register($fullname,$email,$phone, $hashedPassword);
                     Session::set('success', 'Đăng kí tài khoản thành công.');
                     Redirect::to('users/login');
@@ -81,15 +79,15 @@ class Users extends Controller
 
 
             if (empty($fullname)) {
-                $data['errName'] = 'Name Must Has Value.';
+                $data['errName'] = 'Họ tên là bắt buộc';
             }
 
             if (empty($email)) {
-                $data['errEmail'] = 'Email Must Has Value.';
+                $data['errEmail'] = 'Email là bắt buộc';
             } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $data['errEmail'] = 'Enter Valid Email';
+                $data['errEmail'] = 'Nhập đúng định dạng email';
             }elseif ($userEmail != $email && $this->userModel->findUserByEmail($email)) {
-                $data['errEmail'] = 'This Email is Already Exists';
+                $data['errEmail'] = 'Email đã tồn tại';
             }
 
             if (empty($data['errEmail']) && empty($data['errName'])) {
@@ -131,23 +129,19 @@ class Users extends Controller
             if (empty($data['errEmail']) && empty($data['errPassword'])) {
                 $user = $this->userModel->login($email, $password);
                 if ($user) {
-                        Session::set('user_id', $user->ma_kh);
-//                        $cartItems = 0;
-//                        $carts = $this->cartModel->getAllCart();
-//                        if ($carts) {
-//                            foreach ($carts as $cart) {
-//                                $cartItems = $cartItems + $cart->qty;
-//                            }
-//                        } else {
-//                            $cartItems = 0;
-//                        }
-                        Redirect::to('users/profile');
+                    Session::set('user_id', $user->ma_kh);
+                    $data['cart'] = $this->cartModel->getCurrentCarts();
+                    $cartItems = 0;
+                    foreach ($data['cart']['detail'] as $cart) {
+                        $cartItems = $cartItems + $cart->so_luong;
+                    }
+                    Session::set('user_cart', $cartItems);
+                    Redirect::to('users/profile');
                 } else {
                     $data['errPassword'] = "Password Not Valid";
                     $this->view('users.login', $data);
                 }
             } else {
-                echo "test";
                 $this->view('users.login', $data);
             }
         } else {
@@ -174,6 +168,23 @@ class Users extends Controller
         $data['user'] = $user;
         $this->view('users.profile', $data);
 
+    }
+
+    public function orderHistory($params){
+        $data['title'] = 'Lịch sử mua hàng';
+        $orderId = isset($params['orderId']) ? $params['orderId'] : '';
+        $userId = Auth::getCurrentCustomerId();
+
+        if($orderId){
+            $order = $this->orderModel->getOrderByOrderId($orderId);
+            $data['title'] = "Đơn hàng #$orderId";
+            $data['order'] = $order;
+            $this->view('front.orderDetail',$data);
+        }else{
+            $orderList = $this->orderModel->getCustomerOrderHistory($userId);
+            $data['orderList'] = $orderList;
+            $this->view('front.orderHistory',$data);
+        }
     }
 
 }
