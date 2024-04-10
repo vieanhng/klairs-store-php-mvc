@@ -2,7 +2,7 @@
 
     class User {
 
-        private $db;
+        private Database $db;
 
         public function __construct(){
             $this->db = Database::getInstance();

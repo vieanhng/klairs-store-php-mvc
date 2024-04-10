@@ -17,7 +17,15 @@
                     <div class="input-validator">
                         <label class="label" for="password">Mật khẩu</label>
                         <input class="mt-3" type="password" name="password" placeholder="Password">
+                        <?php if(!empty($data['errEmail'])):?>
+                        <label id="password-error" class="error" for="password"><?= $data['errEmail'] ?></label>
+                        <?php endif;?>
+                        <?php if( !empty($data['errPassword'])):?>
+                            <label id="password-error" class="error" for="password"><?=$data['errPassword'] ?></label>
+                        <?php endif;?>
                     </div>
+
+                    <a href="<?=getUrl('users/resetPassword')?>">Quên mật khẩu</a>
                     <input class="btn -dark" type="submit" style="float: right" value="ĐĂNG NHẬP">
                 </form>
             </div>

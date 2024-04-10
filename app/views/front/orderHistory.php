@@ -28,7 +28,7 @@
                                 <td style="text-align: center;"><?=$index +1?></td>
                                 <td style="text-align: center;"><?=$order->ma_dh?></td>
                                 <td style="text-align: center;"><?=$order->ngay_lap_dh?></td>
-                                <td style="text-align: center;"><?=$order->thanh_tien?></td>
+                                <td style="text-align: center;"><?=formatPrice($order->thanh_tien)?></td>
                                 <td style="text-align: center;"><?=$order->trang_thai?></td>
                                 <td style="text-align: center;"><a href="<?=getUrl('users/orderHistory/orderId/'.$order->ma_dh)?>">Chi tiết</a></td>
                             </tr>

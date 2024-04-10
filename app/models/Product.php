@@ -212,4 +212,10 @@
             return $this->db->execute();
         }
 
+        public function updateQty($productId, $qty){
+            $this->db->query('UPDATE san_pham SET so_luong  = so_luong '.$qty." WHERE ma_sp = :ma_sp");
+            $this->db->bind(':ma_sp',$productId);
+            return $this->db->execute();
+        }
+
     }

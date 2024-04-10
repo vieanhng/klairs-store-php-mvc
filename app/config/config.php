@@ -8,4 +8,4 @@
     define("DB_USER",'root');
     define("DB_PASS",'mysql');
     define("DB_NAME",'klairs_shop');
-    define("SHIPPING_COST",50000);
+    define("SHIPPING_COST",10000);

@@ -89,14 +89,15 @@
                                                 </tbody>
                                             </table>
                                         </div>
+                                        <?php if($data['paymentMethods']):?>
                                         <div class="checkout__total__price__payment">
-                                            <label class="checkbox-label" for="payment">
-                                                <input id="payment" type="radio" name="payment">Thanh toán khi nhận hàng
+                                            <?php foreach ($data['paymentMethods'] as $payment):?>
+                                            <label class="checkbox-label" for="payment-<?=$payment->ma_pttt?>">
+                                                <input id="payment-<?=$payment->ma_pttt?>" type="radio" name="payment" value="<?=$payment->ma_pttt?>"><?=$payment->ten_pttt?>
                                             </label>
-                                            <label class="checkbox-label" htformlfor="payment">
-                                                <input id="payment" type="radio" name="payment">Thanh toán online
-                                            </label>
+                                             <?php endforeach;?>
                                         </div>
+                                        <?php endif;?>
                                     </div>
                                     <button class="btn -dark">Thanh toán
                                     </button>

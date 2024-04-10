@@ -82,7 +82,9 @@
                 <div class="footer__section -payment">
                     <h5 class="footer-title">Phương thức thanh toán</h5>
                     <p> Các phương thức thanh toán đa dạng.</p>
-                    <div class="payment-methods"><img src="<?=getUrl('public/assets/images/footer/payment.png')?>" alt="Payment methods"/></div>
+                    <div class="payment-methods" style="
+    max-width: 150px;
+"><img src="<?=getUrl('public/assets/images/footer/payment.png')?>" alt="Payment methods"/></div>
                 </div>
             </div>
         </div>

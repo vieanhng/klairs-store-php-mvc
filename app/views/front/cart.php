@@ -110,7 +110,7 @@ $detail = isset($data['cart']['detail']) ? $data['cart']['detail'] : false;
                                     </tr>
                                     </tbody>
                                 </table>
-                                <a class="btn -dark" href="<?= getUrl('checkout')?>">Thanh toán</a>
+                                <a class="btn -dark" href="<?= getUrl('checkout')?>">Đặt hàng</a>
                             </div>
                         </div>
                     </div>

@@ -1,10 +1,11 @@
 <?php require_once ROOT . "/views/inc/header.php" ?>
 
+<?php $order = $data['order']?>
 <div class="breadcrumb" style="margin-bottom: 61px;height: 145px;">
     <div class="container">
         <h2><?=$data['title']?></h2>
         <ul>
-            <li>Trạng thái: <strong><em><?=$data['order']->trang_thai?></em></strong></li>
+            <li>Trạng thái: <strong><em><?=$order['summary']->trang_thai?></em></strong></li>
         </ul>
     </div>
 </div>
@@ -27,13 +28,16 @@
                             </tr>
                             </thead>
                             <tbody>
+                            <?php foreach ($order['detail'] as $index=>$item):?>
                             <tr>
-                                <td style="text-align: center;">1</td>
-                                <td style="text-align: center;">Sản phẩm 1</td>
-                                <td style="text-align: center;">1000đ</td>
-                                <td style="text-align: center;">1</td>
-                                <td style="text-align: center;">1000đ</td>
+                                <td style="text-align: center;"><?=$index+1?></td>
+                                <td style="text-align: center;"><?=$item->ten_sp?></td>
+                                <td style="text-align: center;"><?=formatPrice($item->don_gia_ban)?></td>
+                                <td style="text-align: center;"><?=$item->so_luong?></td>
+                                <td style="text-align: center;"><?=formatPrice($item->tong_tien)?></td>
                             </tr>
+
+                            <?php endforeach;?>
                             </tbody>
                         </table>
                     </div>
@@ -46,15 +50,15 @@
                             <tbody>
                             <tr>
                                 <td class="text-end">Tổng giỏ hàng:</td>
-                                <td class="text-end">1000đ</td>
+                                <td class="text-end"><?=formatPrice($order['summary']->thanh_tien - SHIPPING_COST)?></td>
                             </tr>
                             <tr>
                                 <td class="text-end">Vận chuyển:</td>
-                                <td class="text-end">50,000đ</td>
+                                <td class="text-end"><?=formatPrice(SHIPPING_COST)?></td>
                             </tr>
                             <tr>
                                 <td class="text-end">Tổng đơn hàng:</td>
-                                <td class="text-end">51,000đ</span></td>
+                                <td class="text-end"><?=formatPrice($order['summary']->thanh_tien)?></span></td>
                             </tr>
                             </tbody>
                         </table>
@@ -62,24 +66,25 @@
                 </div>
                 <div>
                     <p><strong>Thông tin giao hàng</strong></p>
+                    <?php $ttgh = json_decode($order['summary']->thong_tin_nhan_hang)?>
                     <div class="table-responsive">
                         <table class="table">
                             <tbody>
                             <tr>
                                 <td>Họ tên:</td>
-                                <td>Nguyễn Việt Anh</td>
+                                <td><?= $ttgh->ho_ten?></td>
                             </tr>
                             <tr>
                                 <td>Số điện thoại:</td>
-                                <td>0379922906</td>
+                                <td><?= $ttgh->dien_thoai?></td>
                             </tr>
                             <tr>
                                 <td>Địa chỉ nhận hàng:</td>
-                                <td>Khách sạn Hilton Hanoi Opera</span></td>
+                                <td><?= $ttgh->dia_chi?></td>
                             </tr>
                             <tr>
                                 <td>Note:</td>
-                                <td></span></td>
+                                <td><?=$order['summary']->note?></td>
                             </tr>
                             </tbody>
                         </table>
@@ -88,7 +93,7 @@
                         <table class="table table-borderless">
                             <tbody>
                             <tr>
-                                <td>Phương thức thanh toán: <strong>Thanh toán khi nhận hàng</strong></td>
+                                <td>Phương thức thanh toán: <strong><?=$order['summary']->ten_pttt?></strong></td>
                                 <td class="text-end"></td>
                             </tr>
                             </tbody>

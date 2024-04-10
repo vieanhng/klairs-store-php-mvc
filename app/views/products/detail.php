@@ -25,7 +25,7 @@ $product = $data['product'];
 
                                 <table>
                                     <tr>
-                                        <td><h5 class="product-price--main">310.000đ</h5></td>
+                                        <td><h5 class="product-price--main"><?=formatPrice($product->don_gia_ban)?></h5></td>
                                     </tr>
                                 </table>
                                 <div class="divider"></div>

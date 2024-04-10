@@ -67,7 +67,7 @@
                 <div class="search-box">
                     <form action="<?=getUrl('allproducts')?>">
                         <input type="text" placeholder="Tìm kiếm sản phẩm?" name="search" />
-                        <button><img src="header/search-icon.png" alt="Search icon" /></button>
+                        <button><img src="<?=getUrl('public/assets/images/header/search-icon.png')?>" alt="Search icon" /></button>
                     </form>
                 </div>
                 <a class="menu-icon" href="<?=getUrl('carts')?>" style="text-decoration: none;color: #000000;margin-right: 0px;">

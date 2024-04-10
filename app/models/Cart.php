@@ -2,7 +2,7 @@
 
     class Cart extends Model {
 
-        private $db;
+        private Database $db;
         /**
          * @var Product
          */
@@ -18,10 +18,11 @@
         }
 
         public function getCartItems($cartId){
-            $this->db->query("select sp.ma_sp,sp.anh_sp as image,ten_sp, ct_gio_hang.so_luong,ct_gio_hang.don_gia_ban,tong_tien 
-from ct_gio_hang 
-    inner join san_pham sp on sp.ma_sp = ct_gio_hang.ma_sp 
-where ma_gio_hang=:cartId");
+            $this->db->query("select sp.ma_sp,sp.anh_sp as image,ten_sp, 
+            ct_gio_hang.so_luong,ct_gio_hang.don_gia_ban,tong_tien 
+            from ct_gio_hang 
+                inner join san_pham sp on sp.ma_sp = ct_gio_hang.ma_sp 
+            where ma_gio_hang=:cartId");
             $this->db->bind(':cartId', $cartId);
             $carts = $this->db->resultSet();
             return $carts;
@@ -39,7 +40,8 @@ where ma_gio_hang=:cartId");
                     'detail'=>$cartDetail
                     ];
             }else{
-                $this->db->query("INSERT INTO gio_hang (ma_kh,thanh_tien) VALUES (:ma_kh,:tong_tien)");
+                $this->db->query("INSERT INTO gio_hang (ma_kh,thanh_tien) VALUES 
+                                            (:ma_kh,:tong_tien)");
                 $this->db->bind(':ma_kh',$userId);
                 $this->db->bind(':tong_tien',0);
                 $this->db->execute();
@@ -130,24 +132,9 @@ where ma_gio_hang=:cartId");
             $this->db->execute();
         }
 
-
-
-
-
-
-
-
-        public function findCartByUser($user_id){
-            $this->db->query("SELECT  FROM cart 
-            WHERE product =:product_id AND user=:user");
-            $this->db->bind(':user',$user_id);
-            $this->db->bind(':product_id',$pro_id);
-            $this->db->execute();
-            return $this->db->rowCount();
-        }
-
         public function deleteItem($productId,$cartId){
-            $this->db->query("DELETE FROM ct_gio_hang WHERE ma_gio_hang=:cart_id AND ma_sp = :ma_sp");
+            $this->db->query("DELETE FROM ct_gio_hang WHERE ma_gio_hang=:cart_id 
+                          AND ma_sp = :ma_sp");
             $this->db->bind(':cart_id',$cartId);
             $this->db->bind(':ma_sp',$productId);
             return $this->db->execute();

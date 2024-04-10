@@ -115,11 +115,11 @@ class Users extends Controller
             $password = $_POST['password'];
 
             if (empty($email)) {
-                $data['errEmail'] = 'Email Must Has Value.';
+                $data['errEmail'] = 'Email là bắt buộc';
             } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $data['errEmail'] = 'Enter Valid Email';
             } elseif ($this->userModel->findUserByEmail($email) == false) {
-                $data['errEmail'] = 'This Email Is Not Exist';
+                $data['errEmail'] = 'Email hoặc mật khẩu không đúng';
             }
 
             if (empty($password)) {
@@ -138,7 +138,7 @@ class Users extends Controller
                     Session::set('user_cart', $cartItems);
                     Redirect::to('users/profile');
                 } else {
-                    $data['errPassword'] = "Password Not Valid";
+                    $data['errEmail'] = 'Email hoặc mật khẩu không đúng';
                     $this->view('users.login', $data);
                 }
             } else {
@@ -171,12 +171,13 @@ class Users extends Controller
     }
 
     public function orderHistory($params){
+        Auth::userAuth();
         $data['title'] = 'Lịch sử mua hàng';
         $orderId = isset($params['orderId']) ? $params['orderId'] : '';
         $userId = Auth::getCurrentCustomerId();
 
-        if($orderId){
-            $order = $this->orderModel->getOrderByOrderId($orderId);
+        if($orderId && $this->orderModel->getOrderDataCustomer($orderId)){
+            $order = $this->orderModel->getOrderDataCustomer($orderId);
             $data['title'] = "Đơn hàng #$orderId";
             $data['order'] = $order;
             $this->view('front.orderDetail',$data);
@@ -185,6 +186,10 @@ class Users extends Controller
             $data['orderList'] = $orderList;
             $this->view('front.orderHistory',$data);
         }
+    }
+
+    public function resetPassword(){
+        echo "ResetPassword";
     }
 
 }

@@ -124,8 +124,4 @@ class Carts extends Controller
         }
     }
 
-    public function checkout()
-    {
-
-    }
 }

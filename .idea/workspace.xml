@@ -4,37 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f031c67c-ead4-45fb-b911-4820909f0aa3" name="Changes" comment="Update huge project">
+    <list default="true" id="f031c67c-ead4-45fb-b911-4820909f0aa3" name="Changes" comment="Update">
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/bootstrap.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/bootstrap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/config.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controller/Carts.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/Carts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/Categories.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/Categories.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controller/Checkout.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/Checkout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/Pages.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/Pages.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/Products.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/Products.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controller/Users.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/Users.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/libs/Core.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/libs/Core.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/ultils.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/ultils.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/libs/Model.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/libs/Model.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/Cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Cart.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Category.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Order.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/front/about.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/front/about.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/front/cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/front/cart.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/front/checkout.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/front/checkout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/front/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/front/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/front/orderDetail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/front/orderDetail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/front/orderHistory.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/front/orderHistory.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/inc/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/inc/footer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/inc/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/inc/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/products/all.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/products/all.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/products/detail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/products/detail.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/users/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/users/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/users/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/users/profile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/users/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/users/register.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/main.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/main.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/footer/payment.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +64,32 @@
       <path value="$PROJECT_DIR$/vendor/phpmailer/phpmailer" />
       <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/payos/payos" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/complexity" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/lines-of-code" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/type" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-invoker" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/cli-parser" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
     </include_path>
   </component>
   <component name="ProjectId" id="2eDlw7VJO1pn6vKWjP6YxVWRYXN" />
@@ -89,7 +106,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/andy/Documents/TLHT/TKWEB/php/klairs-store-php-mvc/app/views/front",
+    "last_opened_file_path": "/Users/andy/Documents/TLHT/TKWEB/php/klairs-store-php-mvc/app/views/orders",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -99,15 +116,26 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/views/orders" />
+      <recent name="$PROJECT_DIR$/public/assets/images/footer" />
       <recent name="$PROJECT_DIR$/app/views/front" />
       <recent name="$PROJECT_DIR$/public/assets/js/pagination" />
       <recent name="$PROJECT_DIR$/app/views/products" />
-      <recent name="$PROJECT_DIR$/public/assets/images/product" />
-      <recent name="$PROJECT_DIR$/public/assets/admin" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="CartsTest.testIndexWithEmptyCart" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="CartsTest" file="$PROJECT_DIR$/tests/CartsTest.php" method="testIndexWithEmptyCart" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHPUnit.CartsTest.testIndexWithEmptyCart" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -127,6 +155,9 @@
       <workItem from="1712383079424" duration="1886000" />
       <workItem from="1712390517760" duration="2068000" />
       <workItem from="1712413331846" duration="11062000" />
+      <workItem from="1712497260726" duration="10795000" />
+      <workItem from="1712565544124" duration="778000" />
+      <workItem from="1712642873560" duration="19226000" />
     </task>
     <task id="LOCAL-00001" summary="Update huge project">
       <created>1712230791563</created>
@@ -135,7 +166,14 @@
       <option name="project" value="LOCAL" />
       <updated>1712230791563</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Update">
+      <created>1712505809617</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1712505809617</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,7 +204,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Update huge project" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update huge project" />
+    <MESSAGE value="Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -182,19 +221,34 @@
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/models/Product.php</url>
-          <line>12</line>
-          <option name="timeStamp" value="20" />
+          <url>file://$PROJECT_DIR$/app/views/front/checkout.php</url>
+          <line>91</line>
+          <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/views/products/all.php</url>
-          <line>5</line>
-          <option name="timeStamp" value="21" />
+          <url>file://$PROJECT_DIR$/app/views/front/orderDetail.php</url>
+          <line>7</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/controller/Checkout.php</url>
+          <line>53</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/models/Order.php</url>
+          <line>98</line>
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/views/users/login.php</url>
+          <line>19</line>
+          <option name="timeStamp" value="48" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/controller/Users.php</url>
-          <line>184</line>
-          <option name="timeStamp" value="24" />
+          <line>116</line>
+          <option name="timeStamp" value="49" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -227,6 +281,15 @@
         <watch expression="$this-&gt;cartModel-&gt;addToCart($productId,$qty)" />
         <watch expression="$this-&gt;_properties['variable_name']" />
         <watch expression="$this-&gt;_properties['base_url_query']" />
+        <watch expression="isset($_POST['name'])" />
+        <watch expression="htmlspecialchars($_POST['name'])" />
+        <watch expression="!isset($_POST['name']) ?:  htmlspecialchars($_POST['name'])" />
+        <watch expression="$data" />
+        <watch expression="$this-&gt;checkUserHasOrder($orderId)" />
+        <watch expression="$this-&gt;db-&gt;rowCount()" />
+      </configuration>
+      <configuration name="phpunit">
+        <watch expression="new Carts()" />
       </configuration>
     </watches-manager>
   </component>
