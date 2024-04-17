@@ -1,23 +1,16 @@
 <?php
 
-class Users extends Controller {
+class Users extends AdminController {
     private $adminModel;
-    private $vkey ;
     public function __construct(){
-
-
-        $this->adminModel = $this->model('Admin');
-    }
-
-    public function index(){
-        return $this->dashboard();
+        $this->adminModel = $this->model('AdminUser');
     }
 
     public function login(){
-        $data['title1'] = 'Admin Login';
+        $data['title'] = 'Đăng nhập Quản lý';
         Auth::adminGuest();
-        if($_SERVER['REQUEST_METHOD']=='POST' && $_POST['login']){
-            Csrf::CsrfToken();
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+
             $email = $_POST['email'];
             $password = $_POST['password'];
 
@@ -37,9 +30,9 @@ class Users extends Controller {
                 $admin = $this->adminModel->login($email,$password);
                 if($admin){
 
-                    Session::set('admin_name',$admin->full_name);
-                    Session::set('admin_id',$admin->user_id);
-                    Redirect::to('admins/dashboard');
+                    Session::set('admin_name',$admin->ten_user);
+                    Session::set('admin_id',$admin->ma_user);
+                    Redirect::to('admin/dashboard');
                 }else {
                     $data['errPassword'] = "Password Not Valid OR not admin";
                     $this->view('admins.login', $data);
@@ -61,13 +54,7 @@ class Users extends Controller {
         Redirect::to('admins/login');
     }
 
-    public function dashboard(){
-        Auth::adminAuth();
-        $data['title1'] = 'Dashboard';
-        $arrayName = explode(' ', Session::name('admin_name'));
-        $data['admin_name'] = $arrayName[0];
-        $this->view('admins.dashboard', $data);
-    }
+
 
 
 }

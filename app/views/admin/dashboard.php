@@ -24,40 +24,112 @@
 </div>
 <div class="container-fluid content-container">
     <div class="row">
-        <div class="col-lg-7 col-xl-8">
-            <div class="card shadow-none mb-4">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <h6 class="text-primary fw-bold m-0">Earnings Overview</h6>
-                    <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
-                        <div class="dropdown-menu shadow dropdown-menu-end animated--fade-in">
-                            <p class="text-center dropdown-header">dropdown header:</p><a class="dropdown-item" href="#">&nbsp;Action</a><a class="dropdown-item" href="#">&nbsp;Another action</a>
-                            <div class="dropdown-divider"></div><a class="dropdown-item" href="#">&nbsp;Something else here</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="chart-area"><canvas data-bss-chart="{&quot;type&quot;:&quot;line&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Jan&quot;,&quot;Feb&quot;,&quot;Mar&quot;,&quot;Apr&quot;,&quot;May&quot;,&quot;Jun&quot;,&quot;Jul&quot;,&quot;Aug&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Earnings&quot;,&quot;fill&quot;:true,&quot;data&quot;:[&quot;0&quot;,&quot;10000&quot;,&quot;5000&quot;,&quot;15000&quot;,&quot;10000&quot;,&quot;20000&quot;,&quot;15000&quot;,&quot;25000&quot;],&quot;backgroundColor&quot;:&quot;rgba(78, 115, 223, 0.05)&quot;,&quot;borderColor&quot;:&quot;rgba(78, 115, 223, 1)&quot;}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:false,&quot;labels&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;}},&quot;title&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;},&quot;scales&quot;:{&quot;xAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;zeroLineColor&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;drawBorder&quot;:false,&quot;drawTicks&quot;:false,&quot;borderDash&quot;:[&quot;2&quot;],&quot;zeroLineBorderDash&quot;:[&quot;2&quot;],&quot;drawOnChartArea&quot;:false},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;#858796&quot;,&quot;fontStyle&quot;:&quot;normal&quot;,&quot;padding&quot;:20}}],&quot;yAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;zeroLineColor&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;drawBorder&quot;:false,&quot;drawTicks&quot;:false,&quot;borderDash&quot;:[&quot;2&quot;],&quot;zeroLineBorderDash&quot;:[&quot;2&quot;]},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;#858796&quot;,&quot;fontStyle&quot;:&quot;normal&quot;,&quot;padding&quot;:20}}]}}}"></canvas></div>
-                </div>
+        <div class="col-md-12 d-inline-flex justify-content-between" style="padding-top: 20px;height: 61px;padding-bottom: 0px;">
+            <div>
+                <p class="fw-bold">DOANH THU THEO THÁNG</p>
             </div>
+
         </div>
-        <div class="col-lg-5 col-xl-4">
-            <div class="card shadow-none mb-4">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <h6 class="text-primary fw-bold m-0">Revenue Sources</h6>
-                    <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
-                        <div class="dropdown-menu shadow dropdown-menu-end animated--fade-in">
-                            <p class="text-center dropdown-header">dropdown header:</p><a class="dropdown-item" href="#">&nbsp;Action</a><a class="dropdown-item" href="#">&nbsp;Another action</a>
-                            <div class="dropdown-divider"></div><a class="dropdown-item" href="#">&nbsp;Something else here</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="chart-area"><canvas data-bss-chart="{&quot;type&quot;:&quot;doughnut&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Direct&quot;,&quot;Social&quot;,&quot;Referral&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;&quot;,&quot;backgroundColor&quot;:[&quot;#4e73df&quot;,&quot;#1cc88a&quot;,&quot;#36b9cc&quot;],&quot;borderColor&quot;:[&quot;#ffffff&quot;,&quot;#ffffff&quot;,&quot;#ffffff&quot;],&quot;data&quot;:[&quot;50&quot;,&quot;30&quot;,&quot;15&quot;]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:false,&quot;labels&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;}},&quot;title&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;}}}"></canvas></div>
-                    <div class="text-center small mt-4"><span class="me-2"><i class="fas fa-circle text-primary"></i>&nbsp;Direct</span><span class="me-2"><i class="fas fa-circle text-success"></i>&nbsp;Social</span><span class="me-2"><i class="fas fa-circle text-info"></i>&nbsp;Refferal</span></div>
+        <div class="col">
+            <div class="card shadow-none mb-4" style="border-style: none;">
+                <div class="chart-area" style="border-style: none;" id="myChart">
+                    <canvas id="acquisitions" height="500" width="2248" style="display: block; height: 320px; width: 1124px;">
+                    </canvas>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
+<div class="container-fluid content-container">
+    <div class="row">
+        <div class="col-md-12 d-inline-flex justify-content-between" style="padding-top: 20px;height: 61px;padding-bottom: 0px;">
+            <div>
+                <p class="fw-bold">TOP 5 SẢN PHẨM BÁN CHẠY</p>
+            </div>
+        </div>
+        <div class="col" style="padding-right: 0px;padding-left: 0px;">
+            <div class="table-responsive d-xl-flex table-striped" style="width: auto;">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Ảnh</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Doanh thu</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Cell 1</td>
+                        <td><img class="product-table-img" src="dogs/image2.jpeg" /></td>
+                        <td>Cell 2</td>
+                        <td>10</td>
+                        <td>3.000.000đ</td>
+                    </tr>
+                    <tr>
+                        <td>Cell 3</td>
+                        <td><img class="product-table-img" src="dogs/image3.jpeg" /></td>
+                        <td>Cell 3</td>
+                        <td>10</td>
+                        <td>3.000.000đ</td>
+                    </tr>
+                    <tr>
+                        <td>Cell 3</td>
+                        <td><img class="product-table-img" src="dogs/image2.jpeg" /></td>
+                        <td>Cell 3</td>
+                        <td>10</td>
+                        <td>3.000.000đ</td>
+                    </tr>
+                    <tr>
+                        <td>Cell 3</td>
+                        <td><img class="product-table-img" src="dogs/image3.jpeg" /></td>
+                        <td>Cell 3</td>
+                        <td>10</td>
+                        <td>3.000.000đ</td>
+                    </tr>
+                    <tr>
+                        <td>Cell 3</td>
+                        <td><img class="product-table-img" src="dogs/image2.jpeg" /></td>
+                        <td>Cell 3</td>
+                        <td>10</td>
+                        <td>3.000.000đ</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 <?php require_once ROOT ."/views/inc/adminFooter.php" ?>
+
+<script>
+    // Sample data for each month
+    (async function() {
+        const data = [
+            { year: 2010, count: 10 },
+            { year: 2011, count: 20 },
+            { year: 2012, count: 15 },
+            { year: 2013, count: 25 },
+            { year: 2014, count: 22 },
+            { year: 2015, count: 30 },
+            { year: 2016, count: 28 },
+        ];
+
+        new Chart(
+            document.getElementById('acquisitions'),
+            {
+                type: 'bar',
+                data: {
+                    labels: data.map(row => row.year),
+                    datasets: [
+                        {
+                            label: 'Acquisitions by year',
+                            data: data.map(row => row.count)
+                        }
+                    ]
+                }
+            }
+        );
+    })();
+</script>

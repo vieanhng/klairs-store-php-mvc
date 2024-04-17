@@ -4,13 +4,11 @@
 
 
         private Category $categoryModel;
-        private $manufactureModel;
         private $productModel;
 
 
         public function __construct(){
             $this->categoryModel = $this->model('Category');
-            $this->manufactureModel = $this->model('Manufacture');
             $this->productModel = $this->model('Product');
         }
        
@@ -18,8 +16,6 @@
         public function index(){
             $data['title'] = 'Trang chủ';
             $data['categories'] = $this->categoryModel->getCategories();
-            //$data['manufactures'] = $this->manufactureModel->getAllMan(1);
-            //$data['products'] = $this->productModel->getAllPro(1);
             $this->view('front.index', $data);
         }
 

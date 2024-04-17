@@ -10,5 +10,8 @@ function formatPrice($price){
 
 function getTime(){
     return date_create('now', timezone_open('Asia/Ho_Chi_Minh'))->format('Y-m-d H:i:s');
+}
 
+function getTodayDate(){
+    return date_create('now', timezone_open('Asia/Ho_Chi_Minh'))->format('Y-m-d');
 }

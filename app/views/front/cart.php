@@ -134,6 +134,7 @@ $detail = isset($data['cart']['detail']) ? $data['cart']['detail'] : false;
         <?php Session::success('successAddToCart')?>
         <?php Session::danger('addToCartFail')?>
         <?php Session::success('successDeleteItem')?>
+
         $('#updateCart').on('click',function () {
 
             const formData = $('#cartForm').serializeArray();

@@ -73,58 +73,7 @@
                                     <div class="product-category">eyes</div>
                                 </div><a class="product-name" href="https://tkeweb.vieanhng.com/klairs-store-php-mvc/products/detail/id/SP001">Product 1</a>
                                 <div class="product-content__footer">
-                                    <h5 class="product-price--main">100đ</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-6 col-sm-6 col-md-4 col-lg-3 px-1 px-lg-3">
-                        <div class="product border p-3">
-                            <div class="product-thumb"><a class="product-thumb__image" href="https://tkeweb.vieanhng.com/klairs-store-php-mvc/products/detail/id/SP002">
-                                    <img src="https://tkeweb.vieanhng.com/klairs-store-php-mvc/public/assets/images/product/product2.jpg" alt="Product image">
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-content__header">
-                                    <div class="product-category">eyes</div>
-                                </div><a class="product-name" href="https://tkeweb.vieanhng.com/klairs-store-php-mvc/products/detail/id/SP002">Product 2</a>
-                                <div class="product-content__footer">
-                                    <h5 class="product-price--main">150đ</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-6 col-sm-6 col-md-4 col-lg-3 px-1 px-lg-3">
-                        <div class="product border p-3">
-                            <div class="product-thumb"><a class="product-thumb__image" href="https://tkeweb.vieanhng.com/klairs-store-php-mvc/products/detail/id/SP003">
-                                    <img src="https://tkeweb.vieanhng.com/klairs-store-php-mvc/public/assets/images/product/product2.jpg" alt="Product image">
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-content__header">
-                                    <div class="product-category">eyes</div>
-                                </div><a class="product-name" href="https://tkeweb.vieanhng.com/klairs-store-php-mvc/products/detail/id/SP003">Product 3</a>
-                                <div class="product-content__footer">
-                                    <h5 class="product-price--main">120đ</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-6 col-sm-6 col-md-4 col-lg-3 px-1 px-lg-3">
-                        <div class="product border p-3">
-                            <div class="product-thumb"><a class="product-thumb__image" href="https://tkeweb.vieanhng.com/klairs-store-php-mvc/products/detail/id/SP003">
-                                    <img src="https://tkeweb.vieanhng.com/klairs-store-php-mvc/public/assets/images/product/product2.jpg" alt="Product image">
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-content__header">
-                                    <div class="product-category">eyes</div>
-                                </div><a class="product-name" href="https://tkeweb.vieanhng.com/klairs-store-php-mvc/products/detail/id/SP003">Product 3</a>
-                                <div class="product-content__footer">
-                                    <h5 class="product-price--main">120đ</h5>
+                                    <h5 class="product-price--main">1000đ</h5>
                                 </div>
                             </div>
                         </div>
