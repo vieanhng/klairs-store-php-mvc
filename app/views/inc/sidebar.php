@@ -104,7 +104,7 @@
                         <div><img class="border rounded-circle img-profile" src="assets/img/avatars/avatar1.jpeg" width="43" height="46"></div>
                         <div style="margin-left: 12px;">
                             <div><span>Admin</span></div>
-                            <div><a href="#">Đăng xuất</a></div>
+                            <div><a href="<?=getUrl('admin/users/logout')?>">Đăng xuất</a></div>
                         </div>
                     </div>
                 </div>

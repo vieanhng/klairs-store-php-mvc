@@ -46,7 +46,7 @@ class Auth{
             return true;
         }else {
             Session::set('danger', 'You are already signed');
-            Redirect::to('admins/dashboard');
+            Redirect::to('admin/dashboard');
         }
     }
 }

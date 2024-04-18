@@ -106,6 +106,9 @@ VALUES (:ma_sp, :ten_sp, :don_gia_nhap, :don_gia_ban, :anh_sp, :so_luong, :mo_ta
 
             $this->addSpDmLink($ma_sp, $ma_danh_muc);
         }
+
+
+
         public function addSpDmLink($ma_sp, $ma_danh_muc){
             foreach ($ma_danh_muc as $danh_muc){
                 $this->db->query('INSERT INTO dm_sp_link VALUES (:ma_sp, :danh_muc)');
@@ -119,6 +122,49 @@ VALUES (:ma_sp, :ten_sp, :don_gia_nhap, :don_gia_ban, :anh_sp, :so_luong, :mo_ta
         public function deleteProductById($id){
             $this->db->query('DELETE FROM san_pham WHERE ma_sp = :ma_sp');
             $this->db->bind(':ma_sp',$id);
+            return $this->db->execute();
+        }
+
+
+        public function updateProduct($ma_sp, $ten_sp, $anh_sp,$don_gia_nhap, $don_gia_ban, $so_luong, $mo_ta, $ma_danh_muc){
+            $query = 'UPDATE san_pham SET ten_sp = :ten_sp, 
+                    don_gia_nhap = :don_gia_nhap, 
+                    don_gia_ban= :don_gia_ban, 
+                    so_luong = :so_luong , 
+                    mo_ta = :mo_ta
+                    ';
+            $where = ' WHERE ma_sp = :ma_sp';
+
+            if($anh_sp){
+                $query .= ',anh_sp = :anh_sp';
+            }
+
+            $query = $query. $where;
+
+            $this->db->query($query);
+
+            $this->db->bind(':ma_sp',$ma_sp);
+            $this->db->bind(':ten_sp',$ten_sp);
+            $this->db->bind(':don_gia_nhap',$don_gia_nhap);
+            $this->db->bind(':don_gia_ban',$don_gia_ban);
+            if($anh_sp) {
+                $this->db->bind(':anh_sp', $anh_sp);
+            }
+            $this->db->bind(':so_luong',$so_luong);
+            $this->db->bind(':mo_ta',$mo_ta);
+            $this->db->execute();
+
+            if($ma_danh_muc){
+                $this->deleteSpDmLink($ma_sp);
+                $this->addSpDmLink($ma_sp, $ma_danh_muc);
+            }
+        }
+
+
+        public function deleteSpDmLink($ma_sp)
+        {
+            $this->db->query('DELETE FROM dm_sp_link WHERE ma_sp = :ma_sp');
+            $this->db->bind(':ma_sp',$ma_sp);
             return $this->db->execute();
         }
 

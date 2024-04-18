@@ -9,10 +9,10 @@ class Header extends Controller
 
     public function __construct()
     {
-//        if(!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) !== 'xmlhttprequest') {
-//           Redirect::to('');
-//            exit();
-//        }
+        if(!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) !== 'xmlhttprequest') {
+           Redirect::to('');
+            exit();
+        }
         header('Content-Type: application/json');
         $this->categoryModel =  $this->model('Category');
     }

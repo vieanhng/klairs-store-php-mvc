@@ -2,7 +2,7 @@
 <?php require_once ROOT . "/views/inc/sidebar.php" ?>
 <?php
 $orders = $data['orders'];
-$count = count($data['orders']);
+$count = $data['orders'] ? count($data['orders']) : 0;
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 if($orders){
     $records_per_page = 10;
@@ -42,7 +42,8 @@ if($orders){
                         <div class="mb-3"><label class="form-label"><strong>Trạng thái</strong></label>
                             <select class="form-select" name="status">
                                 <optgroup label="Trạng thái đơn hàng">
-                                    <option value="Chờ xử lý" selected>Chờ xử lý</option>
+                                    <option selected>Tất cả</option>
+                                    <option value="Chờ xử lý">Chờ xử lý</option>
                                     <option value="Đang xử lý">Đang xử lý</option>
                                     <option value="Đang vận chuyển">Đang vận chuyển</option>
                                     <option value="Thành công">Thành công</option>
@@ -97,6 +98,7 @@ if($orders){
                     </tr>
                     </thead>
                     <tbody>
+                    <?php if($count): ?>
                     <?php foreach ($orders as $index => $order):?>
                     <tr>
                         <td><?= $index + 1 + 10*($page-1)?></td>
@@ -136,6 +138,7 @@ if($orders){
                         </td>
                     </tr>
                     <?php endforeach;?>
+                    <?php endif; ?>
                     </tbody>
                 </table>
             </div>

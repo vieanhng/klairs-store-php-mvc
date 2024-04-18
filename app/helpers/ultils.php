@@ -15,3 +15,8 @@ function getTime(){
 function getTodayDate(){
     return date_create('now', timezone_open('Asia/Ho_Chi_Minh'))->format('Y-m-d');
 }
+
+function getProductImage($anh_sp)
+{
+    return URL.'public/uploads/product/'.$anh_sp;
+}

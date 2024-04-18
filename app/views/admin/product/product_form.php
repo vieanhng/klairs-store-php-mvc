@@ -1,6 +1,12 @@
 <?php require_once ROOT . "/views/inc/adminHeader.php" ?>
 <?php require_once ROOT . "/views/inc/sidebar.php" ?>
 
+<?php
+isset($data['product']) ? $product = $data['product'] : $product = false;
+isset($data['product_categories']) ? $category = $data['product_categories'] : $category = false;
+
+
+?>
 
 <div class="container-fluid">
     <div class="card border-0 rounded-0" style="margin-top: 0px;">
@@ -10,16 +16,16 @@
                     <div class="col">
                         <div class="mb-3"><label class="form-label" for="ma_sp"><strong>Mã sản
                                     phẩm</strong></label><input class="form-control" type="text"
-                                                                placeholder="Nhập mã sản phẩm" name="ma_sp"/></div>
+                                                                placeholder="Nhập mã sản phẩm" <?=$product ? "value={$product->ma_sp}" : "name=ma_sp" ?> ></div>
                         <div class="mb-3"><label class="form-label" for="ten_sp"><strong>Tên sản phẩm</strong></label>
                             <input
                                     class="form-control" type="text" placeholder="Nhập tên sản phẩm"
-                                    name="ten_sp"/></div>
+                                    name="ten_sp" <?= $product ? "value={$product->ten_sp}" : ""?> ></div>
                         <div class="row">
                             <div class="col-xxl-4">
                                 <div class="mb-3"><label class="form-label" for="so_luong"><strong>Số
                                             lượng</strong></label>
-                                    <input class="form-control" type="number" name="so_luong"/>
+                                    <input class="form-control" type="number" name="so_luong" <?= $product ? "value={$product->so_luong}" : ""?> />
                                 </div>
                             </div>
                             <div class="col">
@@ -33,17 +39,20 @@
                         <div class="mb-3"><label class="form-label" for="don_gia_nhap"><strong>Giá
                                     nhập</strong></label>
                             <input class="form-control" type="text"
-                                                                placeholder="Nhập giá nhập" name="don_gia_nhap"/></div>
+                                                                placeholder="Nhập giá nhập" name="don_gia_nhap"
+                                <?= $product ? "value=".(float)$product->don_gia_nhap : ""?>
+                            /></div>
                     </div>
                     <div class="col">
-                        <img id="productImg" width="196" height="202"
+                        <img id="productImg" width="196" height="202"  src="<?= $product ? getProductImage($product->anh_sp) : "#"?>"
                                           style="height: 180px;width: 182px;margin-bottom: 21px;" />
                         <input id="productImgInput" onchange="readURL(this);"
                                 class="form-control" type="file" style="margin-bottom: 18px;" name="anh_sp"/>
                         <div class="mb-3"><label class="form-label" for="don_gia_ban"><strong>Giá
                                     bán</strong></label>
                             <input class="form-control" type="text"
-                                   placeholder="Nhập giá bán" name="don_gia_ban"/></div>
+                                   placeholder="Nhập giá bán" name="don_gia_ban"  <?= $product ? "value=".(float)$product->don_gia_ban : ""?>
+                            /></div>
                     </div>
                 </div>
                 <div class="col">
@@ -51,7 +60,7 @@
                         <select id="select-tags" multiple data-placeholder="Chọn danh mục" class="form-control" name="danh_muc[]">
                             <optgroup label="Chọn danh mục">
                                 <?php foreach ($data['cats'] as $cat):?>
-                                <option value="<?=$cat->ma_danh_muc?>"><?=$cat->ten_danh_muc?></option>
+                                <option value="<?=$cat->ma_danh_muc?>"  <?= $category && array_search($cat->ma_danh_muc,$category) != -1  ? "selected" : ""?> ><?=$cat->ten_danh_muc?></option>
                                 <?php endforeach;?>
                             </optgroup>
                         </select>
@@ -59,7 +68,7 @@
 
                     </div>
                     <div class="mb-3"><label class="form-label" for="username"><strong>Mô tả</strong></label><textarea
-                                class="form-control" style="height: 157px;"></textarea></div>
+                                class="form-control" style="height: 157px;" name="mo_ta"><?= $product ? $product->mo_ta : ""?></textarea></div>
                 </div>
                 <div class="d-flex justify-content-end mb-3">
                     <a href="<?=getUrl('admin/products')?>"><button class="btn btn-secondary" type="button"
@@ -98,6 +107,19 @@
 
 <script>
     $(document).ready(function () {
+        let inputSoluong = $('input[name="so_luong"]');
+        let inputAddValue = $('input#add_sl');
+        $('#button_add').on('click',function () {
+            let sl = inputSoluong.val();
+            let valueAdd = inputAddValue.val();
+
+            inputSoluong.val(Number(sl) + Number(valueAdd))
+        })
+    })
+</script>
+
+<script>
+    $(document).ready(function () {
         $('#productForm').validate({
             rules: {
                 ma_sp: {
@@ -114,9 +136,11 @@
                     required: true,
                     digits: true
                 },
+                <?php if(!$product): ?>
                 anh_sp: {
                     required: true
                 },
+                <?php endif; ?>
                 danh_muc: {
                     required: true
                 },
@@ -140,9 +164,11 @@
                     required: "Giá bán là bắt buộc",
                     digits: "Giá bán phải là số"
                 },
+                <?php if(!$product): ?>
                 anh_sp: {
                     required: "Ảnh sản phẩm là bắt buộc"
                 },
+                <?php endif; ?>
                 danh_muc: {
                     required: "Danh mục là bắt buộc"
                 },
@@ -170,5 +196,7 @@
     }
     $(document).ready(function () {
         <?php Session::danger('addProductFail')?>
+        <?php Session::danger('UpdateProductFail')?>
+        <?php Session::success('updateProductSuccess')?>
     })
 </script>
