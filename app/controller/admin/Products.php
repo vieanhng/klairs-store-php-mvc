@@ -4,6 +4,7 @@ class Products extends Controller
 {
 
     protected Product $productModel;
+    protected Category $categoryModel;
 
     const title = 'Quản lý sản phẩm';
 
@@ -50,15 +51,15 @@ class Products extends Controller
                 isset($_POST['mo_ta']) ? $mota = $_POST['mo_ta'] : $mota = '';
                 isset($_POST['danh_muc']) ? $danh_muc = $_POST['danh_muc'] : $danh_muc = '';
                 $anh_sp = '';
+
                 if(isset($_FILES["anh_sp"]) && $_FILES["anh_sp"]["error"] == 0){
                     $target_dir = dirname(ROOT)."/public/uploads/product/";
-                    $anh_sp = $target_dir . basename($_FILES["anh_sp"]["name"]);
+                    $target_image = $target_dir . basename($_FILES["anh_sp"]["name"]);
                     $uploadOk = 1;
-                    $imageFileType = strtolower(pathinfo($anh_sp,PATHINFO_EXTENSION));
-
+                    $imageFileType = strtolower(pathinfo($target_image,PATHINFO_EXTENSION));
+                    $anh_sp = basename($_FILES["anh_sp"]["name"]);
                     $check = getimagesize($_FILES["anh_sp"]["tmp_name"]);
                     if($check !== false) {
-                        echo "File is an image - " . $check["mime"] . ".";
                         $uploadOk = 1;
                     } else {
                         echo "File is not an image.";
@@ -79,7 +80,7 @@ class Products extends Controller
                     if ($uploadOk == 0) {
                         echo "Sorry, your file was not uploaded.";
                     } else {
-                        if (!move_uploaded_file($_FILES["anh_sp"]["tmp_name"], $anh_sp)) {
+                        if (!move_uploaded_file($_FILES["anh_sp"]["tmp_name"], $target_image)) {
                             echo "Sorry, there was an error uploading your file.";
                         }
                     }
@@ -122,5 +123,22 @@ class Products extends Controller
         }
     }
 
-    
+    public function edit($param){
+        $data['title'] = self::title;
+        $data['subtitle'] = 'Cập nhật sản phẩm';
+        try {
+            $id = $param['id'];
+
+            $data['product'] = $this->productModel->getProductById($id);
+            $data['product_categories'] = $this->categoryModel->getProductCats($id);
+
+        }catch (Exception $e){
+            Session::set('editProductFail', $e->getMessage());
+        }
+
+
+        $this->view('admin.product.product_form', $data);
+    }
+
+
 }

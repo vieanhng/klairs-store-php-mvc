@@ -52,4 +52,12 @@ WHERE danh_muc.ma_danh_muc = :ma_danh_muc");
             $result = $this->db->single();
             return $result;
         }
+
+        public function getProductCats($ma_sp)
+        {
+            $this->db->query("SELECT ma_danh_muc FROM dm_sp_link WHERE ma_sp = :ma");
+            $this->db->bind(":ma",$ma_sp);
+            return $this->db->fetchColumn();
+        }
+
     }
