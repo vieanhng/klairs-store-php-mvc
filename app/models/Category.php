@@ -1,12 +1,76 @@
 <?php 
 
-    class Category extends Controller{
+    class Category extends Model{
         private $db;
-
 
         public function __construct(){
             $this->db = Database::getInstance();
         }
+
+        public function getAllCat(){
+            $this->db->query("SELECT * from danh_muc");
+            $catergory = $this->db->resultSet();
+           if($catergory){
+               return $catergory;
+           }else {
+               return false;
+           }
+        }
+
+        public function getCategoryById($id){
+            $this->db->query("SELECT dm.* FROM danh_muc dm
+            WHERE ma_danh_muc=:ma_dm");
+            $this->db->bind(':ma_dm',$id);
+            $catergory = $this->db->single();
+            if($catergory){
+                return $catergory;
+            }else {
+                return false;
+            }
+        }
+
+        public function addNewCategory($ma_dm, $ten_dm, $mo_ta){
+            $query = 'INSERT INTO danh_muc (ma_danh_muc, ten_danh_muc,mo_ta)
+                        VALUES (:ma_danh_muc, :ten_danh_muc, :mo_ta)';
+            $this->db->query($query);
+            $this->db->bind(':ma_danh_muc',$ma_dm);
+            $this->db->bind(':ten_danh_muc',$ten_dm);
+            $this->db->bind(':mo_ta',$mo_ta);
+            $this->db->execute();
+        }
+
+        public function deleteCategory($id)
+        {
+            $this->db->query("DELETE FROM danh_muc WHERE ma_danh_muc = :ma_danh_muc");
+            $this->db->bind(':ma_danh_muc', $id);
+            $this->db->execute();
+        }
+
+        public function updateCategory($ma_dm, $ten_dm, $mo_ta){
+            $query = 'UPDATE danh_muc SET ten_danh_muc = :ten_danh_muc,  
+                    mo_ta = :mo_ta
+                    ';
+            $where = ' WHERE ma_danh_muc = :ma_danh_muc';
+
+            $query = $query. $where;
+
+            $this->db->query($query);
+
+            $this->db->bind(':ma_danh_muc',$ma_dm);
+            $this->db->bind(':ten_danh_muc',$ten_dm);
+            $this->db->bind(':mo_ta',$mo_ta);
+            $this->db->execute();
+
+
+        }
+
+
+
+
+
+
+
+
 
         public function getCategoryProductCollection($ma_danh_muc){
 
@@ -46,12 +110,7 @@ WHERE danh_muc.ma_danh_muc = :ma_danh_muc");
             return $result;
         }
 
-        public function getCategoryById($ma){
-            $this->db->query("SELECT * FROM danh_muc WHERE ma_danh_muc = :ma");
-            $this->db->bind(":ma",$ma);
-            $result = $this->db->single();
-            return $result;
-        }
+
 
         public function getProductCats($ma_sp)
         {
