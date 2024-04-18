@@ -33,4 +33,20 @@
             }
             $this->view('products.detail',$data);
         }
+
+        public function ajaxProductCategory()
+        {
+//            if(!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) !== 'xmlhttprequest') {
+//                Redirect::to('');
+//                exit();
+//            }
+            try {
+                header('Content-Type: application/json');
+                $categoryList = $this->productModel->getProducts($_POST);
+                echo json_encode($categoryList);
+            }catch (Exception $e) {
+                echo $e->getMessage();
+            }
+
+        }
     }

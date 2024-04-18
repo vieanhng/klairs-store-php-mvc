@@ -7,6 +7,8 @@ class Orders extends Controller
     public function __construct()
     {
         $this->orderModel = $this->model('AdminOrder');
+        $this->categoryModel = $this->model('Category');
+
     }
 
     public function index(){
@@ -22,7 +24,11 @@ class Orders extends Controller
 
     public function create()
     {
-        echo "taođơnhàng";
+        $data['title'] = self::title;
+        $data['subtitle'] = 'Thêm mới đơn hàng';
+        $cats = $this->categoryModel->getCategories();
+        $data['cats'] = $cats;
+        $this->view('admin.order.order_form',$data);
     }
 
     public function edit($param)

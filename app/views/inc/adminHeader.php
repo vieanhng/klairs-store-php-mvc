@@ -12,6 +12,10 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.bootstrap5.min.css">
     <link rel="stylesheet" href="<?=getUrl('public/assets/admin/fonts/fontawesome-all.min.css')?>">
     <link rel="stylesheet" href="<?=getUrl('public/assets/admin/css/untitled.css')?>">
+    <script>
+        window.BASE_URL = '<?= URL ?>'
+    </script>
+
 </head>
 
 <body id="page-top" style="font-family: Manrope, sans-serif;">

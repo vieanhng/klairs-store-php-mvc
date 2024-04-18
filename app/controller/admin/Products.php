@@ -141,8 +141,6 @@ class Products extends Controller
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 try {
 
-                    isset($_POST['ma_sp']) ? $ma_sp = $_POST['ma_sp'] : $ma_sp = '';
-
                     isset($_POST['ten_sp']) ? $ten_sp = $_POST['ten_sp'] : $ten_sp = '';
                     isset($_POST['so_luong']) ? $soluong = $_POST['so_luong'] : $soluong = '';
                     isset($_POST['don_gia_ban']) ? $gia_ban = $_POST['don_gia_ban'] : $gia_ban = '';

@@ -53,7 +53,7 @@
             if(!empty($search['ma_ten'])){
                 $where[] = "sp.ma_sp LIKE '%$search[ma_ten]%' OR sp.ten_sp LIKE '%$search[ma_ten]%'";
             }
-            $query = "SELECT ma_sp,anh_sp, ten_sp, don_gia_ban, (SELECT GROUP_CONCAT(dm.ten_danh_muc SEPARATOR ', ') 
+            $query = "SELECT ma_sp,anh_sp, ten_sp, don_gia_ban,so_luong, (SELECT GROUP_CONCAT(dm.ten_danh_muc SEPARATOR ', ') 
      FROM dm_sp_link dsl INNER JOIN danh_muc dm ON dsl.ma_danh_muc = dm.ma_danh_muc
      WHERE dsl.ma_sp = sp.ma_sp) as danh_muc
 FROM san_pham sp";

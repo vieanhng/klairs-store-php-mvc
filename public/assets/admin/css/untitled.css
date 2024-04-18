@@ -119,3 +119,7 @@ span {
   width: 100%;
 }
 
+.product-card{
+  border-bottom-width: 0.5px;
+  margin-top: 19px;
+}
