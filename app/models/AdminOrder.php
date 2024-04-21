@@ -56,4 +56,7 @@ class AdminOrder extends Model
         $this->db->bind('ma_dh', $id);
         $this->db->execute();
     }
+
+    
+
 }

@@ -1,11 +1,11 @@
 <?php 
     session_start();
     define("ROOT", dirname(dirname(__FILE__)));
-    define("URL",'https://tkeweb.vieanhng.com/klairs-store-php-mvc/');
+    define("URL",'http://localhost/klairs-store-php-mvc/');
 
 
     define("DB_HOST", 'localhost');
     define("DB_USER",'root');
-    define("DB_PASS",'mysql');
-    define("DB_NAME",'klairs_shop');
+    define("DB_PASS",'');
+    define("DB_NAME",'klairs_shop_1');
     define("SHIPPING_COST",10000);

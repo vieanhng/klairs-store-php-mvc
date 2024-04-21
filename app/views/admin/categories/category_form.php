@@ -62,6 +62,7 @@ isset($data['cats']) ? $category = $data['cats'] : $category = false;
                 ten_dm: {
                     required: true
                 },
+                
             },
             messages: {
                 ma_dm: {

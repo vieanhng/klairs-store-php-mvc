@@ -45,6 +45,20 @@
             }
         }
 
+        public function getOrderByCusId($cusId){
+            $this->db->query("SELECT dh.ma_dh, dh.ngay_lap_dh, dh.trang_thai, dh.thanh_tien
+                                FROM don_hang dh
+                                WHERE dh.ma_kh = :ma_kh");
+            $this->db->bind(":ma_kh",$cusId);
+            $orders = $this->db->resultSet();
+            if($orders){
+                return $orders;
+            }else {
+                return false;
+            }
+        } 
+
+
         public function getOrderDetail($orderId){
             $this->db->query("select * from  ct_don_hang ctdh where ctdh.ma_dh = :madh");
             $this->db->bind(":madh",$orderId);
