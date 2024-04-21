@@ -86,8 +86,9 @@ public function edit($param){
     try {
         Auth::adminAuth();
         $id = $param['id'];
-        $data['customer'] = $this->customerModel->getCustomerById($id);
        
+        $data['customer'] = $this->customerModel->getCustomerById($id);
+        
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             try {
 
@@ -117,7 +118,9 @@ public function edit($param){
 
     $orders = $this->orderModel->getOrderByCusId($id);    
     $data['orders'] = $orders;
-    
+
+ 
+
     $this->view('admin.customers.customer_form', $data);
 }  
 }

@@ -12,8 +12,8 @@ isset($data['cats']) ? $category = $data['cats'] : $category = false;
                 <div class="row">
                     <div class="col">
                         <div class="mb-3"><label class="form-label" for="ma_dm"><strong>Mã danh mục</strong></label>
-                                    <input class="form-control" type="text" 
-                                                                placeholder="Nhập mã danh mục" <?=$category ? "value={$category->ma_danh_muc}" : "name=ma_dm" ?> ></div>
+                                    <input class="form-control" type="text"  
+                                                                placeholder="Nhập mã danh mục" <?=$category ? "readonly value={$category->ma_danh_muc}" : "name=ma_dm" ?> ></div>
                         
                     </div> 
                 </div>

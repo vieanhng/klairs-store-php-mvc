@@ -118,6 +118,26 @@ if ($customer){
                 </div>
             </div>
         </div>
+<!--Thống kê --> 
+        <div class="card border-0 rounded-0 mt-3">
+            <div class="card-body">
+                <div class="col d-flex justify-content-between">
+                    <p class="text-dark d-xl-flex fw-bold mt-2">Thống kê</p>
+                </div>
+                <div class="table-responsive" >
+                    <table class="table border">
+                            <tr>
+                                <th class = "border col-sm-4" >Số đơn hàng thành công</th>
+                                <td style = "padding-left: 30px"><?=$customer->so_don_hang?></td>
+                            </tr>
+                            <tr>
+                                <th class = "border col-sm-4">Trị giá đơn đặt</th>
+                                <td style = "padding-left: 30px"><?=formatPrice($customer->tri_gia)?></td>
+                            </tr>
+                    </table>
+                </div>  
+            </div>
+        </div>    
     <?php }?>
 </div>
 

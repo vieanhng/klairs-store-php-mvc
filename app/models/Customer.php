@@ -45,17 +45,29 @@
                return false;
            }
         }
+
         public function getCustomerById($id){
-            $this->db->query("SELECT kh.* FROM khach_hang kh
-            WHERE ma_kh=:ma_kh");
+            $this->db->query("SELECT kh.ma_kh, kh.ten_kh, kh.email, kh.dien_thoai,
+                COUNT(CASE WHEN dh.trang_thai = 'Thành công' THEN 1 ELSE NULL END) AS so_don_hang,
+                COUNT(CASE WHEN dh.trang_thai = 'Completed' THEN 1 ELSE NULL END) AS tri_gia
+            FROM
+                khach_hang kh
+            LEFT JOIN
+                don_hang dh ON kh.ma_kh = dh.ma_kh
+            WHERE kh.ma_kh=:ma_kh 
+            GROUP BY
+                kh.ma_kh, kh.ten_kh, kh.email, kh.dien_thoai
+            ");
             $this->db->bind(':ma_kh',$id);
-            $customers = $this->db->single();
-            if($customers){
-                return $customers;
+            $customer = $this->db->single();
+            if($customer){
+                return $customer;
             }else {
                 return false;
             }
         }
+
+
         public function findCustomerByEmail($email){
             $this->db->query("SELECT * FROM khach_hang WHERE 
             email =:email");
