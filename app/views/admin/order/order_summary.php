@@ -184,6 +184,7 @@ if($orders){
 
 <script>
     $(document).ready(function () {
+        <?php Session::success('addOrderSuccess')?>
         <?php Session::success('deleteOrderSuccess')?>
     })
 

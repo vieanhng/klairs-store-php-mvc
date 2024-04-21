@@ -9,7 +9,7 @@
     <div class="container">
         <div class="checkout">
             <div class="container">
-                <form action="<?=getUrl('checkout/placeorder')?>" method="post">
+                <form id="checkout-form" action="<?=getUrl('checkout/placeorder')?>" method="post">
                 <div class="row">
                     <div class="col-12 col-lg-8">
                             <div class="checkout__form">
@@ -93,7 +93,7 @@
                                         <div class="checkout__total__price__payment">
                                             <?php foreach ($data['paymentMethods'] as $payment):?>
                                             <label class="checkbox-label" for="payment-<?=$payment->ma_pttt?>">
-                                                <input id="payment-<?=$payment->ma_pttt?>" type="radio" name="payment" value="<?=$payment->ma_pttt?>"><?=$payment->ten_pttt?>
+                                                <input id="payment-<?=$payment->ma_pttt?>" type="radio" name="payment" <?=$payment->ma_pttt == 1 ? "checked": ""?> value="<?=$payment->ma_pttt?>"><?=$payment->ten_pttt?>
                                             </label>
                                              <?php endforeach;?>
                                         </div>
@@ -113,3 +113,34 @@
 </div>
 
 <?php require_once ROOT . "/views/inc/footer.php" ?>
+<script>
+    $(document).ready(function () {
+        $('#checkout-form').validate({
+            rules: {
+                name: {
+                    required: true
+                },
+                phone: {
+                    required: true
+                },
+                address: {
+                    required: true
+                }
+            },
+            messages: {
+                name: {
+                    required: "Vui lòng nhập họ tên"
+                },
+                phone: {
+                    required: "Vui lòng nhập số điện thoại"
+                },
+                address: {
+                    required: "Vui lòng nhập địa chỉ"
+                }
+            },
+            submitHandler: function(form) {
+                form.submit();
+            }
+        });
+    });
+</script>

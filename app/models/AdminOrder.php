@@ -2,6 +2,12 @@
 
 class AdminOrder extends Model
 {
+    public function __construct()
+    {
+        Model::__construct();
+        $this->orderModel = $this->loadModel('Order');
+        //$this->customerModel = $this->loadModel('Customer');
+    }
 
     public function getOrderSummary($search)
     {
@@ -17,7 +23,6 @@ class AdminOrder extends Model
 
         $where = array();
 
-// Nếu có chọn lọc thì thêm điều kiện vào mảng
         if ($filter['ma_dh']){
             $where[] = "ma_dh = '{$filter['ma_dh']}'";
         }
@@ -57,6 +62,11 @@ class AdminOrder extends Model
         $this->db->execute();
     }
 
-    
-
+    public function getOrderData($orderId){
+            return [
+                'summary' => $this->orderModel->getOrderByOrderId($orderId),
+                'detail' => $this->orderModel->getOrderDetail($orderId),
+                'cutomer'=>$this->customerModel->getC($orderId)
+            ];
+    }
 }

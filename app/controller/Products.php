@@ -49,4 +49,15 @@
             }
 
         }
+
+        public function ajaxProductData()
+        {
+            try {
+                header('Content-Type: application/json');
+                $product = $this->productModel->getProductById($_POST['ma_sp']);
+                echo json_encode($product);
+            }catch (Exception $e) {
+                echo 'Something went wrong';
+            }
+        }
     }

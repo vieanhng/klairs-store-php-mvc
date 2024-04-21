@@ -46,8 +46,6 @@ class Checkout extends Controller
 
     public function placeOrder(){
         Auth::userAuth();
-        var_dump($_POST);
-        var_dump($this->cartModel->getCurrentCarts());
         $orderId = null;
         try {
             $hoten = !isset($_POST['name']) ?:  htmlspecialchars($_POST['name']);
@@ -95,33 +93,35 @@ class Checkout extends Controller
          * Xoá giỏ hàng
          */
         $this->cartModel->clear();
-        /*
-         * Trừ stock
-         */
+        Session::set('user_cart', 0);
+
+            /*
+             * Trừ stock
+             */
         $this->orderModel->deductStockProductOrder($orderId);
-        //$this->orderModel->recollectStockProductOrder($orderId);
+        //
         /**
          * Neeus thanh otoan online  -> goi online payment
          */
         if($payment == 2){
 
             $data = [
-                "orderCode" => (int)$orderId,            // Mã đơn hàng
-                "amount" => $cart['cart']->thanh_tien + SHIPPING_COST,              // Tổng tiền đơn hàng
-                "description" => "Thanh toan don hang #$orderId",          // Mô tả đơn hàng, được sử dụng làm nội dung chuyển khoản
-                "returnUrl" => getUrl("checkout/success"),            // URL của trang web hoặc ứng dụng sẽ được chuyển hướng tới khi khách hàng thanh toán thành công
-                "cancelUrl" => getUrl("checkout/cancel"),            // URL của trang web hoặc ứng dụng sẽ được chuyển hướng tới khi khách hàng hủy thanh toán
-                "buyerName" => $hoten,       // Tên người mua
-                "buyerPhone" => $phone,      // Số điện thoại người mua
-                "buyerAddress" => $diachi,    // Địa chỉ người mua
-                "expiredAt" => 60000,      // Thời gian hết hạn của link thanh toán
+                "orderCode" => (int)$orderId,
+                "amount" => $cart['cart']->thanh_tien + SHIPPING_COST,
+                "description" => "Thanh toan don hang #$orderId",
+                "returnUrl" => getUrl("checkout/success"),
+                "cancelUrl" => getUrl("checkout/cancel"),
+                "buyerName" => $hoten,
+                "buyerPhone" => $phone,
+                "buyerAddress" => $diachi,
+                "expiredAt" => 60000,
             ];
 
             foreach ($cart['detail'] as $item){
                 $data['items'][] = [
-                    "name" => $item->ten_sp,             // Tên sản phẩm
-                    "quantity" => $item->so_luong,        // Số lượng sản phẩm
-                    "price" => $item->don_gia_ban,           // Giá sản phẩm
+                    "name" => $item->ten_sp,
+                    "quantity" => $item->so_luong,
+                    "price" => $item->don_gia_ban,
                 ];
             }
 
@@ -133,7 +133,7 @@ class Checkout extends Controller
         Redirect::to("checkout/success?orderCode=$orderId");
 
         }catch (Exception $exception){
-
+            //$this->orderModel->recollectStockProductOrder($orderId);
         }
     }
 
@@ -146,8 +146,8 @@ class Checkout extends Controller
         $data = [
             'orderCode'=>(int)$_GET['orderCode'],
             'amount'=>(float)$_GET['amount'],
-            "description" => $_GET['description'],         // Mô tả đơn hàng, được sử dụng làm nội dung chuyển khoản
-            "returnUrl" => $_GET['returnUrl'],       // URL của trang web hoặc ứng dụng sẽ được chuyển hướng tới khi khách hàng thanh toán thành công
+            "description" => $_GET['description'],
+            "returnUrl" => $_GET['returnUrl'],
             "cancelUrl" => $_GET['cancelUrl'],
             "buyerName" => $_GET['buyerName'],
             "buyerPhone" => $_GET['buyerPhone'],
@@ -156,9 +156,9 @@ class Checkout extends Controller
 
         foreach ($_GET['items'] as $item){
             $data['items'][] = [
-                "name" => $item['name'],             // Tên sản phẩm
-                "quantity" => (int)$item['quantity'],  // Số lượng sản phẩm
-                "price" => (float)$item['price']     // Giá sản phẩm
+                "name" => $item['name'],
+                "quantity" => (int)$item['quantity'],
+                "price" => (float)$item['price']
             ];
         }
         $data['items'][] = [

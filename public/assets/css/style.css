@@ -2287,7 +2287,7 @@ ul {
 }
 
 .input-validator label.error {
-    color: #de1339;
+    color: #de1339 !important;
     font-size: 0.8125em;
     font-weight: normal;
     line-height: 1;
