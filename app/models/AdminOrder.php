@@ -6,7 +6,7 @@ class AdminOrder extends Model
     {
         Model::__construct();
         $this->orderModel = $this->loadModel('Order');
-        //$this->customerModel = $this->loadModel('Customer');
+        $this->customerModel = $this->loadModel('Customer');
     }
 
     public function getOrderSummary($search)
@@ -63,10 +63,12 @@ class AdminOrder extends Model
     }
 
     public function getOrderData($orderId){
+            $order = $this->orderModel->getOrderByOrderId($orderId);
+            $customerId = $order->ma_kh;
             return [
-                'summary' => $this->orderModel->getOrderByOrderId($orderId),
+                'summary' => $order,
                 'detail' => $this->orderModel->getOrderDetail($orderId),
-                'cutomer'=>$this->customerModel->getC($orderId)
+                'customer'=>$this->customerModel->getCustomerById($customerId)
             ];
     }
 }

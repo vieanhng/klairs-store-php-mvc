@@ -105,7 +105,21 @@ class Orders extends Controller
         $data['subtitle'] = 'Cập nhật đơn hàng';
         $order = $this->orderAdminModel->getOrderData($param['id']);
         $data['order'] = $order;
-        var_dump($order);
+        $tienhang = 0;
+        foreach($order['detail'] as $item){
+            $tienhang += $item->tong_tien;
+        }
+        $data['order']['summary']->tien_hang = $tienhang;
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            try {
+                $status = isset($_POST['status']) ? $_POST['status'] : "";
+                $this->orderModel->updateOrderStatus($param['id'],$status);
+                Session::set('updateStatusOrderSuccess','Cập nhật trạng thái thành công');
+                Redirect::back();
+            }catch (Exception $e) {
+                Session::set('updateStatusOrderFail',$e->getMessage());
+            }
+        }
         $this->view('admin.order.order_update',$data);
     }
 
@@ -116,7 +130,7 @@ class Orders extends Controller
         try {
             $this->orderAdminModel->deleteOrder($id);
             Session::set('deleteOrderSuccess','Xoá đơn hàng thành công.');
-            Redirect::back();
+            Redirect::to('admin/orders');
         } catch (Exception $e) {
             echo $e->getMessage();
         }
