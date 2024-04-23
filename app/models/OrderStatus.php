@@ -15,4 +15,16 @@ final class OrderStatus
     const SHIPPING = 'Đang vận chuyển';
     const CANCEL = 'Huỷ bỏ';
     const COMPLETE = 'Thành công';
+
+
+    public static function orderStatus()
+    {
+        return [
+            self::PENDING,
+            self::PROCESSING,
+            self::SHIPPING,
+            self::CANCEL,
+            self::COMPLETE
+        ];
+    }
 }
