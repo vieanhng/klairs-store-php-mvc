@@ -3,6 +3,9 @@ class Customers extends Controller
 {
 
     protected Customer $customerModel;
+    protected User $userModel;
+    protected Order $orderModel;
+    protected SendEmailModel $sendEmail;
    
 
     const title = 'Quản lý khách hàng';
@@ -10,7 +13,9 @@ class Customers extends Controller
     public function __construct()
     {
         $this->customerModel = $this->model('Customer');
+        $this->userModel = $this->model('User');
         $this->orderModel = $this->model('Order');
+        $this->sendEmail = $this->model('SendEmailModel');
     }
 // Danh sách khách hàng
     public function index()
@@ -44,14 +49,14 @@ class Customers extends Controller
             
                 isset($_POST['ten_kh']) ? $ten_kh = $_POST['ten_kh'] : $ten_kh = '';
                 isset($_POST['sdt']) ? $sdt = $_POST['sdt'] : $sdt = '';
-                
 
-                $this->customerModel->addNewCustomer(
-                    $ten_kh,
-                    $email,
-                    $sdt,
-                    //$mat_khau
-                );
+                if(!empty($email) && !empty($ten_kh)){
+                    $password = random_password();
+                    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+                    $this->sendEmail->resetPass($email,$password);
+                    $this->userModel->register($ten_kh,$email,$sdt,$hashedPassword);
+                }
+
                 Session::set('addCustomerSuccess', 'Thêm khách hàng thành công');
                 Redirect::to('admin/customers');
 
@@ -122,6 +127,25 @@ public function edit($param){
  
 
     $this->view('admin.customers.customer_form', $data);
-}  
+}
+
+public function resetPassword()
+{
+    try {
+        Auth::adminAuth();
+        $id = $_POST['id'];
+        $email = $_POST['email'];
+        $password = random_password();
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $this->sendEmail->resetPass($email,$password);
+        $this->userModel->resetPass($email,$hashedPassword);
+        echo json_encode([
+            'status'=>true,
+            'message'=>'Reset password thành công'
+        ]);
+    }catch (Exception $exception){
+        Session::set('editCustomerFail', $exception->getMessage());
+    }
+}
 }
 ?>

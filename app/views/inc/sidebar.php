@@ -64,7 +64,7 @@
                         </svg>
                         <span style="padding-top: 0px;margin-top: 0px;">Quản lý phương thức&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; thanh toán</span>
                     </a>
-                    <a class="nav-link fw-semibold" href="<?=getUrl('admin/reports')?>" style="color: #545d6f;padding-right: 15px;padding-left: 17px;">
+                    <a class="nav-link fw-semibold" href="<?=getUrl('admin/report')?>" style="color: #545d6f;padding-right: 15px;padding-left: 17px;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-adjustments-alt" style="font-size: 20px;margin-right: 7px;margin-top: 0px;margin-bottom: 5px;">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <rect x="4" y="8" width="4" height="4"></rect>
@@ -79,11 +79,11 @@
                         </svg>
                         <span style="padding-top: 0px;margin-top: 0px;">Báo cáo</span>
                     </a>
-                    <a class="nav-link fw-semibold" href="<?=getUrl('admin/reports/type/products')?>" style="color: #545d6f;padding-right: 15px;padding-left: 20px;margin-left: 30px;width: 190px;border-left: 1px solid rgb(84,93,111);"><span style="padding-top: 0px;margin-top: 0px;">Báo cáo theo sản phẩm</span>
+                    <a class="nav-link fw-semibold" href="<?=getUrl('admin/report/products')?>" style="color: #545d6f;padding-right: 15px;padding-left: 20px;margin-left: 30px;width: 190px;border-left: 1px solid rgb(84,93,111);"><span style="padding-top: 0px;margin-top: 0px;">Báo cáo theo sản phẩm</span>
                     </a>
-                    <a class="nav-link fw-semibold" href="<?=getUrl('admin/reports/type/categories')?>" style="color: #545d6f;padding-right: 15px;padding-left: 20px;margin-left: 30px;width: 190px;border-left: 1px solid #545d6f;"><span style="padding-top: 0px;margin-top: 0px;">Báo cáo theo danh mục</span>
+                    <a class="nav-link fw-semibold" href="<?=getUrl('admin/report/categories')?>" style="color: #545d6f;padding-right: 15px;padding-left: 20px;margin-left: 30px;width: 190px;border-left: 1px solid #545d6f;"><span style="padding-top: 0px;margin-top: 0px;">Báo cáo theo danh mục</span>
                     </a>
-                    <a class="nav-link fw-semibold" href="<?=getUrl('admin/reports/type/revenue')?>" style="color: #545d6f;padding-right: 15px;padding-left: 20px;margin-left: 30px;width: 190px;border-left: 1px solid #545d6f;"><span style="padding-top: 0px;margin-top: 0px;">Báo cáo doanh thu</span>
+                    <a class="nav-link fw-semibold" href="<?=getUrl('admin/report/revenue')?>" style="color: #545d6f;padding-right: 15px;padding-left: 20px;margin-left: 30px;width: 190px;border-left: 1px solid #545d6f;"><span style="padding-top: 0px;margin-top: 0px;">Báo cáo doanh thu</span>
                     </a>
                 </li>
             </ul>
@@ -101,7 +101,7 @@
             <li class="nav-item dropdown no-arrow">
                 <div style="width: 138.812px;">
                     <div class="d-inline-flex">
-                        <div><img class="border rounded-circle img-profile" src="assets/img/avatars/avatar1.jpeg" width="43" height="46"></div>
+                        <div><img class="border rounded-circle img-profile" src="assets/img/avatars/avatar1.jpeg" width="46" height="46"></div>
                         <div style="margin-left: 12px;">
                             <div><span>Admin</span></div>
                             <div><a href="<?=getUrl('admin/users/logout')?>">Đăng xuất</a></div>

@@ -22,4 +22,12 @@ class PaymentMethod extends Model
             return false;
         }
     }
+
+    public function updateStatus($ma,$status)
+    {
+        $this->db->query('UPDATE phuong_thuc_thanh_toan set trang_thai = :status WHERE ma_pttt = :ma_pttt');
+        $this->db->bind(':status',$status);
+        $this->db->bind(':ma_pttt',$ma);
+        $this->db->execute();
+    }
 }

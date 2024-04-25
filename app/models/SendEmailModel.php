@@ -100,4 +100,33 @@ class SendEmailModel
         }
     }
 
+
+    public function resetPass($email,$content)
+    {
+        $mail = $this->getMailer();
+        $mail->addAddress($email);
+        $mail->isHTML(true);                                  // Set email format to HTML
+        $mail->Subject = 'Đặt lại mật khẩu';
+        $mail->Body = "Mật khẩu mới: ". $content;
+        $mail->AltBody = 'Thank you';
+        $mail->send();
+
+    }
+
+    private function getMailer()
+    {
+        $mail = new PHPMailer(true);
+        $mail->SMTPDebug = 0;                                 // Enable verbose debug output
+        $mail->isSMTP();                                      // Set mailer to use SMTP
+        $mail->Host = 'smtp.ethereal.email';  // Specify main and backup SMTP servers
+        $mail->SMTPAuth = true;                               // Enable SMTP authentication
+        $mail->Username = 'doris.herzog@ethereal.email';                 // SMTP username
+        $mail->Password = 'QUaQ5a5mGjAN7eK6j3';                           // SMTP password
+        $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+        $mail->Port = 587;
+        $mail->CharSet = "UTF-8";
+        $mail->setFrom('g2@admin.com', 'Andy');
+        return $mail;
+    }
+
 }

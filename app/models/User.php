@@ -59,6 +59,13 @@
             $this->db->execute();
         }
 
+        public function resetPass($email,$password){
+            $this->db->query("UPDATE khach_hang SET password=:password WHERE email=:email");
+            $this->db->bind(':password',$password);
+            $this->db->bind(':email',$email);
+            $this->db->execute();
+        }
+
         public function findUserByEmail($email){
             $this->db->query("SELECT * FROM khach_hang WHERE 
             email =:email");

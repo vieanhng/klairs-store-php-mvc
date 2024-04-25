@@ -189,7 +189,20 @@ class Users extends Controller
     }
 
     public function resetPassword(){
-        echo "ResetPassword";
+        try {
+            Auth::userGuest();
+            $email = $_POST['email'];
+            $password = random_password();
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            $this->sendEmail->resetPass($email,$password);
+            $this->userModel->updatePassword($id,$hashedPassword);
+            echo json_encode([
+                'status'=>true,
+                'message'=>'Reset password thành công'
+            ]);
+        }catch (Exception $exception){
+            Session::set('editCustomerFail', $exception->getMessage());
+        }
     }
 
 }

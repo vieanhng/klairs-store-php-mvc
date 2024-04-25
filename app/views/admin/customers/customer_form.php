@@ -52,7 +52,7 @@ if ($customer){
                 <div class="d-flex justify-content-end mb-3">
                     <!-- Reset mk -->
                     <?php if($customer){?>
-                    <button class="btn btn-warning ml-3" type="submit" style="margin-right: 20px; padding-right: 20px;padding-left: 20px;">
+                    <button id="reset-password" class="btn btn-warning ml-3" type="button" style="margin-right: 20px; padding-right: 20px;padding-left: 20px;">
                         Reset mật khẩu
                     </button>
                     <?php }?>
@@ -175,4 +175,29 @@ if ($customer){
         <?php Session::danger('UpdateCustomerFail')?>
         <?php Session::success('updateCustomerSuccess')?>
     })
+
+
+    if($('#reset-password').length){
+        $('#reset-password').on('click',function () {
+            $(this).prop('disabled',true);
+            $.ajax({
+                method:"POST",
+                url:'<?=getUrl('admin/customers/resetPassword')?>',
+                data:{
+                    id: <?=$customer->ma_kh?>,
+                    email: "<?=$customer->email?>"
+                },
+                dataType: "json",
+                success: function(data,state) {
+                    if(data.status){
+                        FuiToast.success(data.message);
+                        $(this).prop('disabled',false);
+                    }else{
+                        FuiToast.error(data.message);
+                        $(this).prop('disabled',false);
+                    }
+                }
+            })
+        })
+    }
 </script>
