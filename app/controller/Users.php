@@ -195,7 +195,7 @@ class Users extends Controller
             $password = random_password();
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
             $this->sendEmail->resetPass($email,$password);
-            $this->userModel->updatePassword($id,$hashedPassword);
+            $this->userModel->resetPass($email,$hashedPassword);
             echo json_encode([
                 'status'=>true,
                 'message'=>'Reset password thành công'
