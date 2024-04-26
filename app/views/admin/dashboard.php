@@ -1,6 +1,16 @@
 
 <?php require_once ROOT ."/views/inc/adminHeader.php" ?>
 <?php require_once ROOT ."/views/inc/sidebar.php" ?>
+
+<?php
+$sellToday = $data['sellToday'];
+$topPros = $data['topPro'];
+$count = $data['topPro'] ? count($data['topPro']) : 0;
+$revenues = $data['revenues'];
+
+//var_dump(json_encode($revenues));
+?>
+
 <div class="container-fluid content-container" style="background: #ffffff;border-radius: 5px;width: auto;margin-left: 25px;margin-right: 25px;margin-bottom: 25px;">
     <div class="row" style="background: #ffffff;margin-left: -12px;">
         <div class="col-md-12" style="padding-top: 17px;height: 51px;">
@@ -9,16 +19,17 @@
     </div>
     <div class="row" style="margin-left: 12px;margin-right: 12px;margin-top: 9px;">
         <div class="col-md-3"><span class="fw-semibold">Đơn hàng</span>
-            <p style="font-size: 31px;">20</p>
+            <p style="font-size: 31px;"><?=$sellToday->so_luong_dh?> </p>
         </div>
-        <div class="col-md-3"><span class="fw-semibold">Đơn hàng</span>
-            <p style="font-size: 31px;">20</p>
+        <div class="col-md-3"><span class="fw-semibold">Sản phẩm bán ra</span>
+            <p style="font-size: 31px;"><?=($sellToday->so_sp_ban) ? ($sellToday->so_sp_ban) : 0 ?></p>
         </div>
-        <div class="col-md-3"><span class="fw-semibold">Đơn hàng</span>
-            <p style="font-size: 31px;">20</p>
+        
+        <div class="col-md-3"><span class="fw-semibold">Doanh thu</span>
+            <p style="font-size: 31px;"><?=($sellToday->doanh_thu) ? formatPrice($sellToday->doanh_thu) : formatPrice(0) ?></p>
         </div>
-        <div class="col-md-3"><span class="fw-semibold">Đơn hàng</span>
-            <p style="font-size: 31px;">20</p>
+        <div class="col-md-3"><span class="fw-semibold">Lợi nhuận</span>
+            <p style="font-size: 31px;"><?=($sellToday->loi_nhuan) ? formatPrice($sellToday->loi_nhuan) : formatPrice(0) ?></p>
         </div>
     </div>
 </div>
@@ -61,43 +72,25 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>Cell 1</td>
-                        <td><img class="product-table-img" src="dogs/image2.jpeg" /></td>
-                        <td>Cell 2</td>
-                        <td>10</td>
-                        <td>3.000.000đ</td>
-                    </tr>
-                    <tr>
-                        <td>Cell 3</td>
-                        <td><img class="product-table-img" src="dogs/image3.jpeg" /></td>
-                        <td>Cell 3</td>
-                        <td>10</td>
-                        <td>3.000.000đ</td>
-                    </tr>
-                    <tr>
-                        <td>Cell 3</td>
-                        <td><img class="product-table-img" src="dogs/image2.jpeg" /></td>
-                        <td>Cell 3</td>
-                        <td>10</td>
-                        <td>3.000.000đ</td>
-                    </tr>
-                    <tr>
-                        <td>Cell 3</td>
-                        <td><img class="product-table-img" src="dogs/image3.jpeg" /></td>
-                        <td>Cell 3</td>
-                        <td>10</td>
-                        <td>3.000.000đ</td>
-                    </tr>
-                    <tr>
-                        <td>Cell 3</td>
-                        <td><img class="product-table-img" src="dogs/image2.jpeg" /></td>
-                        <td>Cell 3</td>
-                        <td>10</td>
-                        <td>3.000.000đ</td>
+                    <?php if($count):?>
+                        <?php foreach ($topPros as $index => $topPro):?>
+                            <tr>
+                                <td><?= $index + 1?></td>
+                                <td><?=$topPro->anh_sp?></td>
+                                <td><?=$topPro->ten_sp?></td>
+                                <td><?=$topPro->so_sp_ban?></td>
+                                <td><?=formatPrice($topPro->doanh_thu)?></td>
+                        <?php endforeach;?>
+                    <?php endif;?>
                     </tr>
                     </tbody>
                 </table>
             </div>
+            <div class="d-flex justify-content-between">
+                <div>
+                    <p class="mt-3 text-dark">Tổng <strong><?= $count ?></strong> sản phẩm</p>
+                </div>
+            </div>    
         </div>
     </div>
 </div>
@@ -106,26 +99,35 @@
 <script>
     // Sample data for each month
     (async function() {
-        const data = [
-            { year: 2010, count: 10 },
-            { year: 2011, count: 20 },
-            { year: 2012, count: 15 },
-            { year: 2013, count: 25 },
-            { year: 2014, count: 22 },
-            { year: 2015, count: 30 },
-            { year: 2016, count: 28 },
-        ];
 
+        // $.post("controller.Orders.php",
+        //     function (revenues){
+        //         console.log(revenues);
+        //         var data = [];
+        //         //var result = [];
+        //         for (var j in data){
+        //             for (var i in revenues) {
+        //                 j->year.push(revenues[i].thang_nam);
+        //                 j->count.push(revenues[i].doanh_thu);
+        //         }
+                
+                
+        //         }
+        //     }
+        // )   
+        const data = <?php echo json_encode($revenues);?>;
+        
         new Chart(
             document.getElementById('acquisitions'),
             {
                 type: 'bar',
                 data: {
-                    labels: data.map(row => row.year),
+                    labels: data.map(row => row.thang_nam),
                     datasets: [
                         {
-                            label: 'Acquisitions by year',
-                            data: data.map(row => row.count)
+                            label: 'Doanh thu theo tháng',
+                            backgroundColor: "#0043c4",
+                            data: data.map(row =>Number(row.doanh_thu))
                         }
                     ]
                 }

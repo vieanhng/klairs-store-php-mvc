@@ -27,7 +27,7 @@
                 "SELECT
                     kh.ma_kh, kh.ten_kh, kh.email, kh.dien_thoai,
                     COUNT(CASE WHEN dh.trang_thai = 'Thành công' THEN 1 ELSE NULL END) AS so_don_hang,
-                    COUNT(CASE WHEN dh.trang_thai = 'Completed' THEN 1 ELSE NULL END) AS tri_gia
+                    SUM(CASE WHEN dh.trang_thai = 'Thành công' THEN dh.thanh_tien ELSE 0 END) AS tri_gia
                 FROM
                     khach_hang kh
                 LEFT JOIN
@@ -49,7 +49,7 @@
         public function getCustomerById($id){
             $this->db->query("SELECT kh.ma_kh, kh.ten_kh, kh.email, kh.dien_thoai,
                 COUNT(CASE WHEN dh.trang_thai = 'Thành công' THEN 1 ELSE NULL END) AS so_don_hang,
-                COUNT(CASE WHEN dh.trang_thai = 'Completed' THEN 1 ELSE NULL END) AS tri_gia
+                SUM(CASE WHEN dh.trang_thai = 'Thành công' THEN dh.thanh_tien ELSE 0 END) AS tri_gia
             FROM
                 khach_hang kh
             LEFT JOIN

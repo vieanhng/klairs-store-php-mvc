@@ -151,6 +151,257 @@
             }
         }
 
+        public function getSellToday(){
+            $this->db->query(" SELECT COUNT(dh.ma_dh) AS so_luong_dh, 
+            SUM(ctdh.so_luong) AS so_sp_ban, 
+            SUM(thanh_tien) AS doanh_thu, 
+            SUM(thanh_tien - ctdh.so_luong * don_gia_nhap) AS loi_nhuan
+            FROM don_hang dh
+            INNER JOIN ct_don_hang ctdh ON dh.ma_dh = ctdh.ma_dh
+            INNER JOIN san_pham sp ON sp.ma_sp=ctdh.ma_sp
+            WHERE DATE(ngay_cap_nhat) = CURRENT_DATE()  AND trang_thai = 'Thành công'");
+            $sellToday = $this->db->single();
+            if($sellToday){
+                return $sellToday;
+            }else {
+                return false;
+            }
+        }
+
+        public function getRevenue(){
+            $this->db->query(" SELECT SUM(thanh_tien) AS doanh_thu,
+            MONTH(ngay_cap_nhat) AS thang, YEAR(ngay_cap_nhat) AS nam
+            FROM don_hang
+            WHERE trang_thai='Thành công'
+            GROUP BY MONTH(ngay_cap_nhat), YEAR(ngay_cap_nhat)
+            ORDER BY YEAR(ngay_cap_nhat) DESC
+            LIMIT 6");
+            $result = $this->db->resultSet();
+            if($result){
+                return $result;
+            }else {
+                return false;
+            }
+        }
+
+        public function getTopPro(){
+            $this->db->query("SELECT anh_sp, sp.ten_sp, SUM(ctdh.so_luong) AS so_sp_ban, sum(thanh_tien) AS doanh_thu
+            FROM don_hang dh
+            INNER JOIN ct_don_hang ctdh ON dh.ma_dh = ctdh.ma_dh
+            INNER JOIN san_pham sp ON sp.ma_sp=ctdh.ma_sp
+            WHERE MONTH(ngay_cap_nhat) = MONTH (CURRENT_DATE()) AND trang_thai = 'Thành công'
+            GROUP BY anh_sp, sp.ten_sp
+            LIMIT 5");
+            $topPro = $this->db->resultSet();
+            if($topPro){
+                return $topPro;
+            }else {
+                return false;
+            }
+            
+        }
+
+        public function getSellSummary($search){
+            $today = getTodayDate();
+
+            $filter  = array(
+                'from_date'     => $_GET['from_date'] ?? false,
+                'to_date'   => $_GET['to_date'] ?? false,
+                //'order'  => $_GET['status'] ?? false
+            );
+
+            $orderBy = $_GET['order'] ?? 'DESC';
+
+            $where = array();
+            
+            if ($filter['from_date']){
+                $where[] = "ngay_lap_dh >= '{$filter['from_date']}'";
+            }
+
+            if ($filter['to_date']){
+                $where[] = "ngay_lap_dh <= '{$filter['to_date']}'";
+            }
+        
+            $query = " SELECT COUNT(dh.ma_dh) AS so_luong_dh, 
+                                SUM(ctdh.so_luong) AS so_sp_ban, 
+                                SUM(thanh_tien) AS doanh_thu, 
+                                SUM(thanh_tien - ctdh.so_luong * don_gia_nhap) AS loi_nhuan
+                        FROM don_hang dh
+                        INNER JOIN ct_don_hang ctdh ON dh.ma_dh = ctdh.ma_dh
+                        INNER JOIN san_pham sp ON sp.ma_sp=ctdh.ma_sp";
+            if ($where){
+                $query .= ' WHERE '.implode(' AND ', $where);
+            }
+                else {
+                $query .= ' WHERE DATE(ngay_lap_dh) = '."'$today'";   
+                }
+            if ($orderBy){
+                $query .= ' ORDER BY so_sp_ban '.$orderBy;
+            }
+
+            $this->db->query($query);
+            $sellSummary = $this->db->single();
+            if($sellSummary){
+                return $sellSummary;
+            }else {
+                return false;
+            }
+        }
+
+        
+
+        public function getReportPros($search){
+            $today = getTodayDate();
+
+            $filter  = array(
+                'from_date'     => $_GET['from_date'] ?? false,
+                'to_date'   => $_GET['to_date'] ?? false,
+            );
+
+            $orderBy = $_GET['order'] ?? 'DESC';
+
+            $where = array();
+            
+            if ($filter['from_date']){
+                $where[] = "ngay_lap_dh >= '{$filter['from_date']}'";
+            }
+
+            if ($filter['to_date']){
+                $where[] = "ngay_lap_dh <= '{$filter['to_date']}'";
+            }
+
+            $query = " SELECT san_pham.ma_sp, san_pham.ten_sp, 
+                            SUM(ct_don_hang.so_luong) AS so_sp_ban, sum(thanh_tien) AS doanh_thu, 
+                            SUM(thanh_tien - ct_don_hang.so_luong * don_gia_nhap) AS loi_nhuan
+                        FROM don_hang 
+                        INNER JOIN ct_don_hang ON don_hang.ma_dh = ct_don_hang.ma_dh
+                        INNER JOIN san_pham ON san_pham.ma_sp=ct_don_hang.ma_sp";
+                        
+            if ($where){
+                $query .= ' WHERE '.implode(' AND ', $where);
+            }
+                else {
+                $query .= ' WHERE DATE(ngay_lap_dh) = '."'$today'";   
+                }
+            $query = $query.' GROUP BY san_pham.ma_sp, san_pham.ten_sp';
+            if ($orderBy){
+                $query .= ' ORDER BY so_sp_ban '.$orderBy;
+            }
+
+            $this->db->query($query);
+            $reportPros = $this->db->resultSet();
+            if($reportPros){
+                return $reportPros;
+            }else {
+                return false;
+            }
+        }
+
+        
+
+        public function getReportCats($search){
+            $today = getTodayDate();
+
+            $filter  = array(
+                'from_date'     => $_GET['from_date'] ?? false,
+                'to_date'   => $_GET['to_date'] ?? false,
+            );
+
+            $orderBy = $_GET['order'] ?? 'DESC';
+
+            $where = array();
+            
+            if ($filter['from_date']){
+                $where[] = "ngay_lap_dh >= '{$filter['from_date']}'";
+            }
+
+            if ($filter['to_date']){
+                $where[] = "ngay_lap_dh <= '{$filter['to_date']}'";
+            }
+
+            $query = " SELECT danh_muc.ma_danh_muc, danh_muc.ten_danh_muc, 
+                            SUM(ct_don_hang.so_luong) AS so_luong_ban,
+                            SUM(thanh_tien) AS doanh_thu, 
+                            SUM(thanh_tien - ct_don_hang.so_luong * don_gia_nhap) AS loi_nhuan
+                        FROM don_hang 
+                        INNER JOIN ct_don_hang ON don_hang.ma_dh = ct_don_hang.ma_dh
+                        INNER JOIN san_pham ON san_pham.ma_sp=ct_don_hang.ma_sp
+                        INNER JOIN dm_sp_link ON san_pham.ma_sp = dm_sp_link.ma_sp
+                        INNER JOIN danh_muc ON danh_muc.ma_danh_muc = dm_sp_link.ma_danh_muc";
+                        
+            if ($where){
+                $query .= ' WHERE '.implode(' AND ', $where);
+            }
+                else {
+                $query .= ' WHERE DATE(ngay_lap_dh) = '."'$today'";   
+                }
+            $query = $query.' GROUP BY danh_muc.ma_danh_muc, danh_muc.ten_danh_muc';
+            if ($orderBy){
+                $query .= ' ORDER BY so_luong_ban '.$orderBy;
+            }
+
+            $this->db->query($query);
+            $reportCats = $this->db->resultSet();
+            if($reportCats){
+                return $reportCats;
+            }else {
+                return false;
+            }
+        }
+
+       
+
+        public function getReportRes($search){
+            $today = getTodayDate();
+
+            $filter  = array(
+                'from_date'     => $_GET['from_date'] ?? false,
+                'to_date'   => $_GET['to_date'] ?? false,
+            );
+
+            $orderBy = $_GET['order'] ?? 'DESC';
+
+            $where = array();
+            
+            if ($filter['from_date']){
+                $where[] = "ngay_lap_dh >= '{$filter['from_date']}'";
+            }
+
+            if ($filter['to_date']){
+                $where[] = "ngay_lap_dh <= '{$filter['to_date']}'";
+            }
+
+            $query = " SELECT date(ngay_lap_dh) AS ngay ,
+                            COUNT(don_hang.ma_dh) AS so_luong_dh, 
+                            SUM(ct_don_hang.so_luong) AS so_sp_ban, 
+                            SUM(thanh_tien) AS doanh_thu, 
+                            SUM(thanh_tien - ct_don_hang.so_luong * don_gia_nhap) AS loi_nhuan
+                        FROM don_hang 
+                        INNER JOIN ct_don_hang ON don_hang.ma_dh = ct_don_hang.ma_dh
+                        INNER JOIN san_pham ON san_pham.ma_sp=ct_don_hang.ma_sp";
+                        
+            if ($where){
+                $query .= ' WHERE '.implode(' AND ', $where);
+            }
+                else {
+                $query .= ' WHERE DATE(ngay_lap_dh) = '."'$today'";   
+                }
+            $query = $query.' GROUP BY date(ngay_lap_dh)';
+            if ($orderBy){
+                $query .= ' ORDER BY so_sp_ban '.$orderBy;
+            }
+
+            $this->db->query($query);
+            $reportRes = $this->db->resultSet();
+            if($reportRes){
+                return $reportRes;
+            }else {
+                return false;
+            }
+        }
 
 
-    }
+
+
+    }    
+?>        
