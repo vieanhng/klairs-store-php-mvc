@@ -20,41 +20,42 @@ class Users extends Controller
     {
         Auth::userAuth();
     }
+
     public function register()
     {
         Auth::userGuest();
         $data['title'] = 'Đăng ký';
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $fullname = filter_var($_POST['name'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-                $phone = filter_var($_POST['phone'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                $password = $_POST['password'];
-                $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
-                $password2 = $_POST['confirm_password'];
+            $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+            $phone = filter_var($_POST['phone'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $password = $_POST['password'];
+            $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
+            $password2 = $_POST['confirm_password'];
 
-                if (empty($fullname)) {
-                    $data['errName'] = 'Họ tên là bắt buộc';
-                }
+            if (empty($fullname)) {
+                $data['errName'] = 'Họ tên là bắt buộc';
+            }
 
-                if (empty($email)) {
-                    $data['errEmail'] = 'Email là bắt buộc';
-                } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    $data['errEmail'] = 'Nhập đúng định dạng email';
-                } elseif ($this->userModel->findUserByEmail($email)) {
-                    $data['errEmail'] = 'Email đã tồn tại';
-                }
+            if (empty($email)) {
+                $data['errEmail'] = 'Email là bắt buộc';
+            } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $data['errEmail'] = 'Nhập đúng định dạng email';
+            } elseif ($this->userModel->findUserByEmail($email)) {
+                $data['errEmail'] = 'Email đã tồn tại';
+            }
 
-                if ($password != $password2) {
-                    $data['errPassword'] = 'Xác nhận mật khẩu không khớp';
-                }
-                if (empty($data['errEmail']) && empty($data['errName']) && empty($data['errPassword'])) {
-                    $this->userModel->register($fullname,$email,$phone, $hashedPassword);
-                    Session::set('success', 'Đăng kí tài khoản thành công.');
-                    Redirect::to('users/login');
-                    exit();
-                } else {
-                    $this->view('users.register', $data);
-                }
+            if ($password != $password2) {
+                $data['errPassword'] = 'Xác nhận mật khẩu không khớp';
+            }
+            if (empty($data['errEmail']) && empty($data['errName']) && empty($data['errPassword'])) {
+                $this->userModel->register($fullname, $email, $phone, $hashedPassword);
+                Session::set('success', 'Đăng kí tài khoản thành công.');
+                Redirect::to('users/login');
+                exit();
+            } else {
+                $this->view('users.register', $data);
+            }
         } else {
 
             $this->view('users.register', $data);
@@ -77,7 +78,6 @@ class Users extends Controller
             $password2 = $_POST['confirm_password'];
 
 
-
             if (empty($fullname)) {
                 $data['errName'] = 'Họ tên là bắt buộc';
             }
@@ -86,18 +86,18 @@ class Users extends Controller
                 $data['errEmail'] = 'Email là bắt buộc';
             } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $data['errEmail'] = 'Nhập đúng định dạng email';
-            }elseif ($userEmail != $email && $this->userModel->findUserByEmail($email)) {
+            } elseif ($userEmail != $email && $this->userModel->findUserByEmail($email)) {
                 $data['errEmail'] = 'Email đã tồn tại';
             }
 
             if (empty($data['errEmail']) && empty($data['errName'])) {
                 try {
 
-                    $this->userModel->update($userId,$fullname,$email,$phone,$hashedPassword);
+                    $this->userModel->update($userId, $fullname, $email, $phone, $hashedPassword);
                     if ($password == $password2 && !empty($password) && !empty($password2)) {
-                        $this->userModel->updatePassword($userId,$hashedPassword);
+                        $this->userModel->updatePassword($userId, $hashedPassword);
                     }
-                }catch (Exception $exception){
+                } catch (Exception $exception) {
                     Session::set('danger', 'Đã xảy ra lỗi.');
                 }
             }
@@ -170,39 +170,48 @@ class Users extends Controller
 
     }
 
-    public function orderHistory($params){
+    public function orderHistory($params)
+    {
         Auth::userAuth();
         $data['title'] = 'Lịch sử mua hàng';
         $orderId = isset($params['orderId']) ? $params['orderId'] : '';
         $userId = Auth::getCurrentCustomerId();
 
-        if($orderId && $this->orderModel->getOrderDataCustomer($orderId)){
+        if ($orderId && $this->orderModel->getOrderDataCustomer($orderId)) {
             $order = $this->orderModel->getOrderDataCustomer($orderId);
             $data['title'] = "Đơn hàng #$orderId";
             $data['order'] = $order;
-            $this->view('front.orderDetail',$data);
-        }else{
+            $this->view('front.orderDetail', $data);
+        } else {
             $orderList = $this->orderModel->getCustomerOrderHistory($userId);
             $data['orderList'] = $orderList;
-            $this->view('front.orderHistory',$data);
+            $this->view('front.orderHistory', $data);
         }
     }
 
-    public function resetPassword(){
-        try {
-            Auth::userGuest();
-            $email = $_POST['email'];
-            $password = random_password();
-            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-            $this->sendEmail->resetPass($email,$password);
-            $this->userModel->resetPass($email,$hashedPassword);
-            echo json_encode([
-                'status'=>true,
-                'message'=>'Reset password thành công'
-            ]);
-        }catch (Exception $exception){
-            Session::set('editCustomerFail', $exception->getMessage());
+    public function resetPassword()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            try {
+                Auth::userGuest();
+                $email = $_POST['email'];
+                $user = $this->userModel->findUserByEmail($email);
+                if(!$user){
+                    Session::set('resetFail', 'Email không tồn tại');
+                    Redirect::to('users/resetPassword?email='.$email);
+                }
+                $password = random_password();
+                $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+                $this->email->resetPass($email, $password);
+                $this->userModel->resetPass($email, $hashedPassword);
+                Session::set('emailSent', 'Mật khẩu đã được gửi về email.');
+                Redirect::to('users/resetPassword?email='.$email);
+            } catch (Exception $exception) {
+                Session::set('resetFail', $exception->getMessage());
+            }
         }
+        $data['title'] = 'Đặt lại mật khẩu';
+        $this->view('users.resetPassword',$data);
     }
 
 }

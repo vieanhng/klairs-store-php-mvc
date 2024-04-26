@@ -1,25 +1,29 @@
 <?php require_once ROOT ."/views/inc/header.php" ?>
-    <div class="  mt-4">
-        <div class="row">
-            <div class="col-10 col-md-8 m-auto">
-            <?php
-            
-            echo  isset($data['err']) ?  '<div class="text-danger">'.$data['err'].'</div>' : '' 
-             ?>
-            <h5  class='text-center mb-4'>Type New Password</h5>
-            <form method="POST" action='<?php echo URL ?>/users/resetPassword/<?php echo $data["vkey"] ?>'>
-                <div class="input-group">
-                    <input type="password"  name='password' class="form-control <?php echo  isset($data['errPassword']) ?  'is-invalid' : '' ?>" placeholder='Enter new password'>
-                    
-                    <div class="input-group-btn">
-                        <input type="submit" name='newPassword' value="New Password" class="btn btn-success">
+<div class="breadcrumb">
+    <div class="container">
+        <h2>Đặt lại mật khẩu</h2>
+    </div>
+</div>
+<div class="container ">
+    <div class="row justify-content-center">
+        <div class="col-xl-6 col-sm-8 col-12">
+            <div class="contact-form mb-5">
+                <form id="loginForm" method="post">
+                    <div class="input-validator">
+                        <label class="label" for="email">Email</label>
+                        <input class="mt-3" type="text" name="email" placeholder="Email" value="<?= !isset($_GET['email']) ?: $_GET['email']?>">
                     </div>
-                    <p><?php echo  isset($data['errPassword']) ?  '<div class="invalid-feedback">'.$data['errPassword'].'</div>' : '' ?></p>
-                </div>
-                
-            </form>
-            <small class="text-muted">Type new password and hit it in the login form</small>
+                    <input class="btn -dark" type="submit" style="float: right" value="ĐẶT LẠI MẬT KHẨU">
+                </form>
             </div>
+
         </div>
     </div>
+</div>
+
 <?php require_once ROOT ."/views/inc/footer.php" ?>
+<script>
+    <?php Session::success('emailSent')?>
+    <?php Session::danger('resetFail')?>
+
+</script>

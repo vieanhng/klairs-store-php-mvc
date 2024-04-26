@@ -23,8 +23,38 @@ class Report extends Controller
         $report = $this->orderModel->getSellSummary($_GET);
         $data['report'] = $report;
         $reportPros = $this->orderModel->getReportPros($_GET);
-        $data['reportPros'] = $reportPros; 
-        //var_dump($data);
+        $data['reportPros'] = $reportPros;
+        if(isset($_GET['export'])){
+            try {
+                $header = [
+                    "ma_sp",
+                    "ten_sp",
+                    "so_sp_ban",
+                    "doanh_thu",
+                    "loi_nhuan"
+                ];
+
+                $dataExport[] = $header;
+
+                foreach ($reportPros as $item){
+                    $dataExport[] = [
+                        $item->ma_sp,
+                        $item->ten_sp,
+                        $item->so_sp_ban,
+                        $item->doanh_thu,
+                        $item->loi_nhuan
+                    ];
+                }
+
+                $xlsx = Shuchkin\SimpleXLSXGen::fromArray( $dataExport );
+                $xlsx->saveAs(dirname(ROOT).'/public/export/productreport.xlsx');
+                Redirect::to('public/export/productreport.xlsx');
+            }catch (Exception $e) {
+                echo $e->getMessage();
+            }
+
+        }
+
         $this->view('admin.report.product', $data);
    
     }
@@ -39,6 +69,36 @@ class Report extends Controller
         $data['report'] = $report;
         $reportCats = $this->orderModel->getReportCats($_GET);
         $data['reportCats'] = $reportCats;
+        if(isset($_GET['export'])){
+            try {
+                $header = [
+                    "ma_danh_muc",
+                    "ten_danh_muc",
+                    "so_luong_ban",
+                    "doanh_thu",
+                    "loi_nhuan"
+                ];
+
+                $dataExport[] = $header;
+
+                foreach ($reportCats as $item){
+                    $dataExport[] = [
+                        $item->ma_danh_muc,
+                        $item->ten_danh_muc,
+                        $item->so_luong_ban,
+                        $item->doanh_thu,
+                        $item->loi_nhuan
+                    ];
+                }
+
+                $xlsx = Shuchkin\SimpleXLSXGen::fromArray( $dataExport );
+                $xlsx->saveAs(dirname(ROOT).'/public/export/category_report.xlsx');
+                Redirect::to('public/export/category_report.xlsx');
+            }catch (Exception $e) {
+                echo $e->getMessage();
+            }
+
+        }
         $this->view('admin.report.category',$data);
     }
 
@@ -52,6 +112,35 @@ class Report extends Controller
         $data['report'] = $report;
         $reportRes = $this->orderModel->getReportRes($_GET);
         $data['reportRes'] = $reportRes;
+        if(isset($_GET['export'])){
+            try {
+                $header = [
+                    "ngay",
+                    "so_don_hang",
+                    "so_san_pham",
+                    "doanh_thu",
+                    "loi_nhuan"
+                ];
+
+                $dataExport[] = $header;
+
+                foreach ($reportRes as $item){
+                    $dataExport[] = [
+                        $item->ngay,
+                        $item->so_luong_dh,
+                        $item->so_sp_ban,
+                        $item->doanh_thu,
+                        $item->loi_nhuan
+                    ];
+                }
+
+                $xlsx = Shuchkin\SimpleXLSXGen::fromArray( $dataExport );
+                $xlsx->saveAs(dirname(ROOT).'/public/export/revenue_report.xlsx');
+                Redirect::to('public/export/revenue_report.xlsx');
+            }catch (Exception $e) {
+                echo $e->getMessage();
+            }
+        }
         $this->view('admin.report.revenue',$data);
     }
 

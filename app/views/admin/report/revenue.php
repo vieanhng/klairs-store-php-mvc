@@ -27,32 +27,32 @@ $count = $data['reportRes'] ? count($data['reportRes']) : 0;
         <div class="card-body">
             <form class="text-dark">
                 <div class="row">
-        
+
                     <div class="col">
                         <div class="mb-3"><label class="form-label" for="from_date"><strong>Từ ngày</strong></label>
                             <input
-                                     class="form-control" type="date"
-                                    name="from_date"/></div>
+                                    class="form-control" type="date"
+                                    name="from_date" value="<?= isset($_GET['from_date']) ? $_GET['from_date'] : ""?>"/></div>
                     </div>
-                    
+
                     <div class="col">
                         <div class="mb-3"><label class="form-label" for="to_date"><strong>Đến ngày</strong></label>
-                        <input  class="form-control" type="date" name="to_date"/></div>
+                            <input  class="form-control" type="date" name="to_date" value="<?= isset($_GET['to_date']) ? $_GET['to_date'] : ""?>"/></div>
                     </div>
                     <div class="col">
-                        <div class="mb-3"><label class="form-label"><strong>Sắp xếp số lượng sản phẩm bán</strong></label>
+                        <div class="mb-3"><label class="form-label"><strong>Sắp xếp số lượng</strong></label>
                             <select class="form-select" name="order">
                                 <optgroup label="Sắp xếp số lượng">
-                                    <option value="DESC">Giảm dần</option>
-                                    <option value="ASC">Tăng dần</option>
+                                    <option <?= isset($_GET['order']) && $_GET['order'] == "DESC"  ? "selected" : ""?> value="DESC">Giảm dần</option>
+                                    <option <?= isset($_GET['order']) && $_GET['order'] == "ASC"  ? "selected" : ""?> value="ASC">Tăng dần</option>
                                 </optgroup>
                             </select>
                         </div>
                     </div>
                 </div>
                 <div class="d-flex justify-content-end mb-3">
-                <button class="btn btn-success ml-3" type="submit" style="margin-right: 20px;">Xuất Excel</button>
-                    <a href="<?=getUrl('admin/report/revenue')?>"><button class="btn btn-secondary" type="button" style="margin-right: 20px;">Làm mới</button></a>
+                    <input class="btn btn-success ml-3" name="export" type="submit" style="margin-right: 20px;" value="Xuất excel">
+                    <a href="<?=getUrl('admin/report')?>"><button class="btn btn-secondary" type="button" style="margin-right: 20px;">Làm mới</button></a>
                     <button class="btn btn-primary ml-3" type="submit" >Tìm kiếm</button>
                 </div>
             </form>
