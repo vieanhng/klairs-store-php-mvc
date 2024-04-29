@@ -15,7 +15,7 @@
                             Dear Klairs là nhãn hàng chăm sóc da nhạy cảm hàng đầu với hàng nghìn khách hàng tại hơn 50
                             quốc gia đã và đang tin tưởng sử dụng.</p>
                         <div data-animation-in="fadeInUp" data-animation-out="fadeInDown" data-animation-delay="0.4"><a
-                                    class="btn -white" href="shopp1.html">Mua ngay</a>
+                                    class="btn -white" href="<?=getUrl('allproducts')?>">Mua ngay</a>
                         </div>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
     <div class="category-one">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12 col-md-4"><a class="category-card" href="#">
+                <div class="col-12 col-md-4"><a class="category-card" href="<?=getUrl('categories/category/cat/DM001')?>">
                         <div class="category-card__background"><img
                                     src="public/assets/images/category/CategoryOne/03.jpg" alt="category image"/></div>
                         <div class="category-card__content">
@@ -33,7 +33,7 @@
 
                         </div>
                     </a></div>
-                <div class="col-12 col-md-4"><a class="category-card" href="#">
+                <div class="col-12 col-md-4"><a class="category-card" href="<?=getUrl('categories/category/cat/DM002')?>">
                         <div class="category-card__background"><img
                                     src="public/assets/images/category/CategoryOne/01.jpg" alt="category image"/></div>
                         <div class="category-card__content">
@@ -41,7 +41,7 @@
 
                         </div>
                     </a></div>
-                <div class="col-12 col-md-4"><a class="category-card" href="#">
+                <div class="col-12 col-md-4"><a class="category-card" href="<?=getUrl('categories/category/cat/DM003')?>">
                         <div class="category-card__background"><img
                                     src="public/assets/images/category/CategoryOne/02.jpg" alt="category image"/></div>
                         <div class="category-card__content">
@@ -62,22 +62,26 @@
 
             <div class="shop-products__gird" style="">
                 <div class="row mx-n1 mx-lg-n3">
-                    <div class="col-6 col-sm-6 col-md-4 col-lg-3 px-1 px-lg-3">
-                        <div class="product border p-3">
-                            <div class="product-thumb"><a class="product-thumb__image" href="https://tkeweb.vieanhng.com/klairs-store-php-mvc/products/detail/id/SP001">
-                                    <img src="https://tkeweb.vieanhng.com/klairs-store-php-mvc/public/assets/images/product/product2.jpg" alt="Product image">
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-content__header">
-                                    <div class="product-category">eyes</div>
-                                </div><a class="product-name" href="https://tkeweb.vieanhng.com/klairs-store-php-mvc/products/detail/id/SP001">Product 1</a>
-                                <div class="product-content__footer">
-                                    <h5 class="product-price--main">1000đ</h5>
+                    <?php foreach ($data['products'] as $index=>$product): ?>
+                        <?php $productUrl = getUrl('products/detail/id/'.$product->ma_sp)?>
+
+                        <div class="col-6 col-sm-6 col-md-4 col-lg-3 px-1 px-lg-3">
+                            <div class="product border p-3">
+                                <div class="product-thumb"><a class="product-thumb__image" href="<?=$productUrl?>">
+                                        <img src="<?=getUrl('public/uploads/product/'.$product->anh_sp)?>" alt="Product image">
+                                    </a>
+                                </div>
+                                <div class="product-content">
+                                    <div class="product-content__header">
+                                    </div><a class="product-name" href="<?=$productUrl?>"><?= $product->ten_sp?></a>
+                                    <div class="product-content__footer">
+                                        <h5 class="product-price--main"><?= formatPrice($product->don_gia_ban)?></h5>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    <?php if($index == 3) break;?>
+                    <?php endforeach; ?>
                 </div>
             </div>
 
@@ -97,7 +101,7 @@
 
             </div>
 
-            <a class="btn -dark" href="shopp1.html">Mua ngay</a>
+            <a class="btn -dark" href="<?=getUrl('products/detail/id/SP014')?>">Mua ngay</a>
         </div>
     </div>
 

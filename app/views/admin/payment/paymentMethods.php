@@ -47,11 +47,11 @@ $payments = $data['payments'];
     $(document).ready(function () {
         $('.payment-status').on('change',function () {
             const paymentId = $(this).data('id');
-            const status = $(this).prop('checked');
+            const status = Number($(this).prop('checked'));
 
             $.ajax({
                 method:"POST",
-                url:'<?=getUrl('admin/payments/updatestatus')?>',
+                url:'<?=getUrl('admin/payments/updateStatus')?>',
                 data:{
                     id:paymentId,
                     status:status

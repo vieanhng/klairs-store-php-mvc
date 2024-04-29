@@ -4,18 +4,20 @@
 
 
         private Category $categoryModel;
-        private $productModel;
+        private Product $productModel;
 
 
         public function __construct(){
             $this->categoryModel = $this->model('Category');
             $this->productModel = $this->model('Product');
+            $this->orderModel = $this->model('Order');
         }
        
 
         public function index(){
             $data['title'] = 'Trang chủ';
             $data['categories'] = $this->categoryModel->getCategories();
+            $data['products'] = $this->productModel->getAllPro();
             $this->view('front.index', $data);
         }
 

@@ -51,7 +51,7 @@ $detail = isset($data['cart']['detail']) ? $data['cart']['detail'] : false;
                                             <td>
                                                 <div class="cart-product">
                                                     <div class="cart-product__content">
-                                                        <a href="product-detail.html">
+                                                        <a href="<?=getUrl('products/detail/id/'.$item->ma_sp)?>">
                                                             <?= $item->ten_sp?>
                                                         </a>
                                                     </div>

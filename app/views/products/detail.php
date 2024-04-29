@@ -13,7 +13,7 @@ $product = $data['product'];
                 <div class="row">
                     <div class="col-12 col-md-6">
                         <div class="product-detail__slide-two">
-                            <div class="slider__item"><img src="<?=getUrl('public/assets/images/product/product2.jpg')?>" alt="Product image"/></div>
+                            <div class="slider__item"><img src="<?=getUrl('public/uploads/product/'.$product->anh_sp)?>" alt="Product image"/></div>
                         </div>
                     </div>
                     <div class="col-12 col-md-6">

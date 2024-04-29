@@ -20,7 +20,7 @@ isset($data['product_categories']) ? $category = $data['product_categories'] : $
                         <div class="mb-3"><label class="form-label" for="ten_sp"><strong>Tên sản phẩm</strong></label>
                             <input
                                     class="form-control" type="text" placeholder="Nhập tên sản phẩm"
-                                    name="ten_sp" <?= $product ? "value={$product->ten_sp}" : ""?> ></div>
+                                    name="ten_sp" value="<?= $product ? $product->ten_sp : ""?>" ></div>
                         <div class="row">
                             <div class="col-xxl-4">
                                 <div class="mb-3"><label class="form-label" for="so_luong"><strong>Số
@@ -60,7 +60,7 @@ isset($data['product_categories']) ? $category = $data['product_categories'] : $
                         <select id="select-tags" multiple data-placeholder="Chọn danh mục" class="form-control" name="danh_muc[]">
                             <optgroup label="Chọn danh mục">
                                 <?php foreach ($data['cats'] as $cat):?>
-                                <option value="<?=$cat->ma_danh_muc?>"  <?= $category && array_search($cat->ma_danh_muc,$category) != -1  ? "selected" : ""?> ><?=$cat->ten_danh_muc?></option>
+                                <option value="<?=$cat->ma_danh_muc?>"  <?= $category && in_array($cat->ma_danh_muc,$category)  ? "selected" : ""?> ><?=$cat->ten_danh_muc?></option>
                                 <?php endforeach;?>
                             </optgroup>
                         </select>

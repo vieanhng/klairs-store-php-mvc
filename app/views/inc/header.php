@@ -40,7 +40,7 @@
 
                         <li class="dropdown relative">
                         <a class="dropdown" data-toggle="dropdown" aria-haspopup="true" href="<?= URL ?>allproducts">Sản phẩm</a>
-                        <div id="category-dropdown" class="dropdown-menu" aria-labelledby="category-dropdown">
+                        <div id="category-dropdown" class="dropdown-menu category-dropdown" aria-labelledby="category-dropdown">
                             <ul>
                                     <li class="dropdown-item"><a href="<?=getUrl('users/login')?>">Đăng nhập</a></li>
                                     <li class="dropdown-item"><a href="<?=getUrl('users/register')?>">Đăng ký</a></li>

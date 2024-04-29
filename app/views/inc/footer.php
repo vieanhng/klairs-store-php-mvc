@@ -6,17 +6,11 @@
             <div class="cart-sidebar">
                 <div class="cart-items__wrapper">
                     <div class="navigation-sidebar">
-                        <div class="search-box">
-                            <form>
-                                <input type="text" placeholder="Nhập thông tin tìm kiếm...">
-                                <button><img src="<?=getUrl('public/assets/images/header/search-icon.png')?>" alt="Search icon"></button>
-                            </form>
-                        </div>
                         <div class="navigator-mobile">
                             <ul>
-                                <li><a href="services.html">Trang chủ</a></li>
+                                <li><a href="<?=URL?>">Trang chủ</a></li>
                                 <li class="relative"><a class="dropdown-menu-controller" href="#">Sản phẩm<span class="dropable-icon"><i class="fas fa-angle-down"></i></span></a>
-                                    <ul class="dropdown-menu" style="display: none;">
+                                    <ul id="category-dropdown-footer" class="dropdown-menu" style="display: none;">
                                         <li><a href="homepages/homepage1.html">Beauty Salon</a></li>
                                         <li><a href="homepages/homepage2.html">Makeup Salon</a></li>
                                         <li><a href="homepages/homepage3.html">Natural Shop</a></li>
@@ -25,8 +19,8 @@
                                         <li><a href="homepages/homepage6.html">Skincare Shop</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="services.html">Giới thiệu</a></li>
-                                <li><a href="contact.html">Liên hệ</a></li>
+                                <li><a href="<?=getUrl('pages/aboutus')?>">Giới thiệu</a></li>
+                                <li><a href="<?=getUrl('pages/contactus')?>">Liên hệ</a></li>
                             </ul>
                         </div>
                     </div>
@@ -37,7 +31,7 @@
 </div>
 <div class="container">
     <div class="footer-one__header">
-        <div class="footer-one__header__logo"><a href="/homepages/homepage1"><img src="<?=URL?>public/assets/images/logonentrang.jpg" alt="Logo"/></a></div>
+        <div class="footer-one__header__logo"><a href="<?=getUrl('')?>"><img src="<?=URL?>public/assets/images/logonentrang.jpg" alt="Logo"/></a></div>
 
         <div class="footer-one__header__social">
             <div class="social-icons -border">
@@ -63,19 +57,6 @@
             </div>
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="footer__section -links">
-                    <div class="row">
-                        <div class="col-12 col-sm-6">
-                            <h5 class="footer-title">Tài khoản</h5>
-                            <ul>
-                                <li><a href="#">Tài khoản của tôi</a></li>
-
-                                <li><a href="cart">Giỏ hàng</a></li>
-                                <li><a href="shopp1.html">Cửa hàng</a></li>
-                                <li><a href="checkout">Thanh toán</a></li>
-                            </ul>
-                        </div>
-
-                    </div>
                 </div>
             </div>
             <div class="col-12 col-lg-4">

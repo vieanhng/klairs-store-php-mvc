@@ -11,7 +11,7 @@
                 <form id="loginForm" method="post">
                     <div class="input-validator">
                         <label class="label" for="email">Email</label>
-                        <input class="mt-3" type="text" name="email" placeholder="Email" value="<?= !isset($_GET['email']) ?: $_GET['email']?>">
+                        <input class="mt-3" type="text" name="email" placeholder="Email" value="<?= isset($_GET['email']) ? $_GET['email'] : ""?>">
                     </div>
                     <input class="btn -dark" type="submit" style="float: right" value="ĐẶT LẠI MẬT KHẨU">
                 </form>

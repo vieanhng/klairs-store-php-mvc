@@ -117,13 +117,13 @@ class Users extends Controller
             if (empty($email)) {
                 $data['errEmail'] = 'Email là bắt buộc';
             } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $data['errEmail'] = 'Enter Valid Email';
+                $data['errEmail'] = 'Nhập đúng định dạng email';
             } elseif ($this->userModel->findUserByEmail($email) == false) {
                 $data['errEmail'] = 'Email hoặc mật khẩu không đúng';
             }
 
             if (empty($password)) {
-                $data['errPassword'] = "Password Must Has Value.";
+                $data['errPassword'] = "Mật khẩu là bắt buộc";
             }
 
             if (empty($data['errEmail']) && empty($data['errPassword'])) {

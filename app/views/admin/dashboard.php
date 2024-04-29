@@ -76,7 +76,7 @@ $revenues = $data['revenues'];
                         <?php foreach ($topPros as $index => $topPro):?>
                             <tr>
                                 <td><?= $index + 1?></td>
-                                <td><?=$topPro->anh_sp?></td>
+                                <td><img src="<?=getUrl('public/uploads/product/'.$topPro->anh_sp)?>" alt="" height="100px"></td>
                                 <td><?=$topPro->ten_sp?></td>
                                 <td><?=$topPro->so_sp_ban?></td>
                                 <td><?=formatPrice($topPro->doanh_thu)?></td>

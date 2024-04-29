@@ -147,6 +147,7 @@ class Products extends Controller
                     isset($_POST['don_gia_nhap']) ? $gia_nhap = $_POST['don_gia_nhap'] : $gia_nhap = '';
                     isset($_POST['mo_ta']) ? $mota = $_POST['mo_ta'] : $mota = '';
                     isset($_POST['danh_muc']) ? $danh_muc = $_POST['danh_muc'] : $danh_muc = '';
+
                     $anh_sp = false;
 
                     if(isset($_FILES["anh_sp"]) && $_FILES["anh_sp"]["error"] == 0){

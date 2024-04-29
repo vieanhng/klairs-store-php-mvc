@@ -6,7 +6,6 @@ class Auth{
         if(isset($_SESSION['admin_id'])){
             return true;
         }else {
-            Session::set('danger', 'You are not authorized');
             Redirect::to('admin/users/login');
         }
     }
@@ -15,7 +14,6 @@ class Auth{
         if(isset($_SESSION['user_id'])){
             return true;
         }else {
-            Session::set('danger', 'You are not authorized');
             Redirect::to('users/login');
         }
     }
@@ -35,7 +33,6 @@ class Auth{
         if(!isset($_SESSION['user_id'])){
             return true;
         }else {
-            Session::set('danger', 'You are already signed');
             Redirect::to('users/profile');
         }
     }
@@ -45,7 +42,6 @@ class Auth{
         if(!isset($_SESSION['admin_id'])){
             return true;
         }else {
-            Session::set('danger', 'You are already signed');
             Redirect::to('admin/dashboard');
         }
     }
