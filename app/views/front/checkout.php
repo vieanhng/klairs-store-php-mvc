@@ -92,9 +92,11 @@
                                         <?php if($data['paymentMethods']):?>
                                         <div class="checkout__total__price__payment">
                                             <?php foreach ($data['paymentMethods'] as $payment):?>
+                                            <?php if($payment->trang_thai):?>
                                             <label class="checkbox-label" for="payment-<?=$payment->ma_pttt?>">
                                                 <input id="payment-<?=$payment->ma_pttt?>" type="radio" name="payment" <?=$payment->ma_pttt == 1 ? "checked": ""?> value="<?=$payment->ma_pttt?>"><?=$payment->ten_pttt?>
                                             </label>
+                                            <?php endif;?>
                                              <?php endforeach;?>
                                         </div>
                                         <?php endif;?>
