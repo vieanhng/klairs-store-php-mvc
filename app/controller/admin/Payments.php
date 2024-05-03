@@ -30,7 +30,7 @@ class Payments extends Controller
             $this->paymentMethodModel->updateStatus($id, $status);
             echo json_encode([
                 'status' => true,
-                'message' => "Cập nhật thành công.jjj"
+                'message' => "Cập nhật thành công."
             ]);
         } catch (Exception $ex) {
             echo json_encode([

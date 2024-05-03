@@ -32,21 +32,33 @@ if($products){
                     <div class="row mx-n1 mx-lg-n3">
                         <?php foreach ($products as $product):?>
                         <?php $productUrl = getUrl('products/detail/id/'.$product->ma_sp)?>
-                        <div class="col-6 col-sm-6 col-md-4 col-lg-3 px-1 px-lg-3">
-                            <div class="product border p-3">
-                                <div class="product-thumb"><a class="product-thumb__image" href="<?=$productUrl?>">
-                                        <img src="<?=getUrl('public/uploads/product/'.$product->anh_sp)?>" alt="Product image">
-                                    </a>
-                                </div>
-                                <div class="product-content">
-                                    <div class="product-content__header">
-                                    </div><a class="product-name" href="<?=$productUrl?>"><?= $product->ten_sp?></a>
-                                    <div class="product-content__footer">
-                                        <h5 class="product-price--main"><?= formatPrice($product->don_gia_ban)?></h5>
+
+                            <div class="col-6 col-sm-6 col-md-4 col-lg-3 px-1 px-lg-3">
+                                <div class="product ">
+                                    <div class="product-type"></div>
+                                    <div class="product-thumb"><a class="product-thumb__image" href="<?=$productUrl?>">
+                                            <img src="<?=getProductImage($product->anh_sp)?>" alt="Product image"></a>
+                                        <div class="product-thumb__actions">
+                                        </div>
+                                    </div>
+                                    <div class="product-content">
+                                        <div class="product-content__header">
+                                            <div class="product-category"></div>
+                                        </div><a class="product-name" href="<?=$productUrl?>"><?= $product->ten_sp?></a>
+                                        <div class="product-content__footer">
+                                            <table>
+                                                <tbody><tr>
+                                                    <td>
+                                                    </td>
+                                                    <td>
+                                                        <h5 class="product-price--main"><?= formatPrice($product->don_gia_ban)?></h5></td>
+                                                </tr>
+                                                </tbody></table>
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
                         <?php endforeach;?>
                     </div>

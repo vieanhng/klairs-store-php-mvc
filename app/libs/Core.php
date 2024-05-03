@@ -42,7 +42,7 @@ class Core {
                     $this->currentMethod = $url[2];
                     unset($url[2]);
                 }else{
-                    header("location: ".URL);
+                    header("location: ".URL.'admin/users');
                     exit();
                 }
             } else {
