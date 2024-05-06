@@ -115,6 +115,7 @@ class Report extends Controller
         if(isset($_GET['export'])){
             try {
                 $header = [
+                    "stt",
                     "ngay",
                     "so_don_hang",
                     "so_san_pham",
@@ -124,8 +125,9 @@ class Report extends Controller
 
                 $dataExport[] = $header;
 
-                foreach ($reportRes as $item){
+                foreach ($reportRes as $index=>$item){
                     $dataExport[] = [
+                        $index +1,
                         $item->ngay,
                         $item->so_luong_dh,
                         $item->so_sp_ban,

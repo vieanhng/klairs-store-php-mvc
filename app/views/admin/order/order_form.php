@@ -95,7 +95,7 @@
                         <div class="mb-3"><label class="form-label" for="username"><strong>Khách hàng</strong></label>
                             <select class="form-select" name="customer">
                                 <optgroup label="Chọn khách hàng...">
-                                    <option value="1" selected>This is item 1</option>
+                                    <option value="1" selected>Guest</option>
                                     <?php foreach ($data['customers'] as $customer):?>
                                         <option value="<?=$customer->ma_kh?>">
                                             <?= $customer->ten_kh ."(".$customer->email.")"?>
@@ -173,7 +173,7 @@
                 </div>
                 <div class="card border-0 rounded-0 mb-4" style="margin-top: 0px;background: rgba(255,255,255,0);">
                     <div class="card-body d-inline-flex justify-content-between" style="background: rgba(255,255,255,0);padding-left: 0px;padding-right: 0px;padding-top: 0px;padding-bottom: 0px;margin-bottom: -1px;">
-                        <button class="btn btn-secondary w-50" type="button" style="margin-right: 5px;">Huỷ</button>
+                        <a class="btn btn-secondary w-50" href="<?=getUrl('admin/orders')?>" style="margin-right: 5px;" >Huỷ</a>
                         <button id="submit-button" class="btn btn-primary w-50" type="button" style="margin-left: 5px;">Lưu</button></div>
                 </div>
             </div>
@@ -343,14 +343,14 @@
             addProduct($(this).data('masp'),$(this).data('stock'));
             setTimeout(function () {
                 updateTotal()
-            },200)
+            },700)
         })
 
         $(document).on('click','.delete-product',function () {
             deleteProduct($(this).data('masp'));
             setTimeout(function () {
                 updateTotal()
-            },200)
+            },700)
         })
 
         $(document).on('change','input.product-qty',function () {
@@ -363,7 +363,7 @@
                 setProductLocalData(newProducts);
                 setTimeout(function () {
                     updateTotal()
-                },200)
+                },700)
             }else{
                 product.qty = Number($(this).data('stock'));
                 $(this).val($(this).data('stock'))

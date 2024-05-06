@@ -146,7 +146,7 @@ $customerDetail = $data['order']['customer'];
                         <button class="btn btn-primary w-100" type="submit" style="margin-right: 5px;">Lưu</button>
                     </div>
                     <div class="card-body d-inline-flex justify-content-between" style="background: rgba(255,255,255,0);padding-left: 0px;padding-right: 0px;padding-top: 0px;padding-bottom: 0px;margin-bottom: -1px;">
-                        <button class="btn btn-secondary w-50" type="button" style="margin-right: 5px;">Huỷ</button>
+                        <a class="btn btn-secondary w-50" href="<?=getUrl('admin/orders')?>" style="margin-right: 5px;" >Huỷ</a>
                         <button data-bs-target="#modal-1" data-bs-toggle="modal" data-orderid="<?=$orderSummary->ma_dh?>" class="btn btn-danger w-50" type="button" style="margin-left: 5px;">Xoá</button></div>
                 </div>
             </div>

@@ -56,7 +56,7 @@ class Customers extends Controller
                 if (!empty($email) && !empty($ten_kh)) {
                     $password = random_password();
                     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-                    $this->sendEmail->resetPass($email, $password);
+                    $this->sendEmail->resetPass($email, $password,'Chào mừng đến với Klairs Shop');
                     $this->userModel->register($ten_kh, $email, $sdt, $hashedPassword);
                 }
 
@@ -93,6 +93,7 @@ class Customers extends Controller
         $data['title'] = self::title;
         $data['subtitle'] = 'Cập nhật khách hàng';
         $data['subtitle1'] = 'Danh sách đơn hàng';
+        $data['action'] = 'edit';
         try {
             Auth::adminAuth();
             $id = $param['id'];

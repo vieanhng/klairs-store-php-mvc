@@ -13,12 +13,12 @@
 
         public function getCustomer($search = ''){
             $act = '';
-            if(!empty($search)){
+            if(isset($search["email_ten"])){
              
               // $search = strtolower($search["email_ten"]); 
                $search = $search["email_ten"]; 
               
-                $act = "WHERE kh.ma_kh LIKE '%$search%' OR kh.ten_kh LIKE '%$search%'  ";
+               $act = "WHERE kh.ma_kh LIKE '%$search%' OR kh.ten_kh LIKE '%$search%'  ";
             }
                
         

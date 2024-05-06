@@ -136,7 +136,8 @@ class Users extends Controller
                         $cartItems = $cartItems + $cart->so_luong;
                     }
                     Session::set('user_cart', $cartItems);
-                    Redirect::to('users/profile');
+                    Session::set('loginSuccess', 'Đăng nhập thành công.');
+                    Redirect::to('/');
                 } else {
                     $data['errEmail'] = 'Email hoặc mật khẩu không đúng';
                     $this->view('users.login', $data);

@@ -175,8 +175,10 @@ if ($customer){
         <?php Session::danger('UpdateCustomerFail')?>
         <?php Session::success('updateCustomerSuccess')?>
     })
+</script>
 
-
+<?php if(isset($data['action']) && $data['action'] == 'edit'): ?>
+<script>
     if($('#reset-password').length){
         $('#reset-password').on('click',function () {
             $(this).prop('disabled',true);
@@ -184,7 +186,7 @@ if ($customer){
                 method:"POST",
                 url:'<?=getUrl('admin/customers/resetPassword')?>',
                 data:{
-                    id: <?=$customer->ma_kh?>,
+                    id: <?= $customer->ma_kh ?>,
                     email: "<?=$customer->email?>"
                 },
                 dataType: "json",
@@ -201,3 +203,4 @@ if ($customer){
         })
     }
 </script>
+    <?php endif;?>

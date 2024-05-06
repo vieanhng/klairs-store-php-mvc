@@ -90,7 +90,7 @@ if($products){
                         <tr>
                             <td><?= $index + 1 + 10*($page-1)?></td>
                             <td><?=$product->ma_sp?></td>
-                            <td><?=$product->anh_sp?></td>
+                            <td><img src="<?=getProductImage($product->anh_sp)?>" alt="" height="70"></td>
                             <td><?=$product->ten_sp?></td>
                             <td><?=$product->danh_muc?></td>
                             <td><?=formatPrice($product->don_gia_ban)?></td>

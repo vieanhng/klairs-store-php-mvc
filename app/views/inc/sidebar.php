@@ -101,7 +101,7 @@
             <li class="nav-item dropdown no-arrow">
                 <div style="width: 138.812px;">
                     <div class="d-inline-flex">
-                        <div><img class="border rounded-circle img-profile" src="assets/img/avatars/avatar1.jpeg" width="46" height="46"></div>
+                        <div><img class="border rounded-circle img-profile" src="https://ui-avatars.com/api/?name=Elon+Musk" width="46" height="46"></div>
                         <div style="margin-left: 12px;">
                             <div><span>Admin</span></div>
                             <div><a href="<?=getUrl('admin/users/logout')?>">Đăng xuất</a></div>

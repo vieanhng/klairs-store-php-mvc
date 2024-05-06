@@ -42,7 +42,7 @@ if($orders){
                         <div class="mb-3"><label class="form-label"><strong>Trạng thái</strong></label>
                             <select class="form-select" name="status">
                                 <optgroup label="Trạng thái đơn hàng">
-                                    <option selected>Tất cả</option>
+                                    <option selected value="">Tất cả</option>
                                     <option value="Chờ xử lý">Chờ xử lý</option>
                                     <option value="Đang xử lý">Đang xử lý</option>
                                     <option value="Đang vận chuyển">Đang vận chuyển</option>

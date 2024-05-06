@@ -101,12 +101,12 @@ class SendEmailModel
     }
 
 
-    public function resetPass($email,$content)
+    public function resetPass($email,$content,$subject = '')
     {
         $mail = $this->getMailer();
         $mail->addAddress($email);
         $mail->isHTML(true);                                  // Set email format to HTML
-        $mail->Subject = 'Đặt lại mật khẩu';
+        $mail->Subject = empty($subject) ? 'Đặt lại mật khẩu' : $subject;
         $mail->Body = "Mật khẩu mới: ". $content;
         $mail->AltBody = 'Thank you';
         $mail->send();

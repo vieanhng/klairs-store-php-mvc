@@ -191,7 +191,7 @@
             INNER JOIN san_pham sp ON sp.ma_sp=ctdh.ma_sp
             WHERE MONTH(ngay_cap_nhat) = MONTH (CURRENT_DATE()) AND trang_thai = 'Thành công'
             GROUP BY anh_sp, sp.ten_sp
-            LIMIT 5");
+            LIMIT 10");
             $topPro = $this->db->resultSet();
             if($topPro){
                 return $topPro;

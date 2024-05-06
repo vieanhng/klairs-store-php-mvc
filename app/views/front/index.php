@@ -171,9 +171,9 @@
     </div>
 
 <?php require_once ROOT . "/views/inc/footer.php" ?>
+    <script>
+        $(document).ready(function () {
+            <?php Session::success('loginSuccess')?>
+        })
 
-<script>
-    // $('#clock').countdown('2024/10/10', function(event) {
-    //     $(this).html(event.strftime('%D days %H:%M:%S'));
-    // });
 </script>

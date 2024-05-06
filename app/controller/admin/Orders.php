@@ -15,6 +15,7 @@ class Orders extends Controller
         $this->orderModel = $this->model('Order');
         $this->categoryModel = $this->model('Category');
         $this->paymentModel = $this->model('PaymentMethod');
+        $this->customerModel = $this->model('Customer');
         $this->model('OrderStatus');
 
     }
@@ -41,7 +42,7 @@ class Orders extends Controller
         $cats = $this->categoryModel->getCategories();
         $data['paymentMethods'] = $this->paymentModel->getPaymentMethods();
         $data['cats'] = $cats;
-        $data['customers'] = [];
+        $data['customers'] = $this->customerModel->getCustomer();
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             try {
                 $products = isset($_POST['products']) ? $_POST['products'] : [];

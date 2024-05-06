@@ -26,15 +26,13 @@ class Users extends Controller
             $password = $_POST['password'];
 
             if (empty($email)) {
-                $data['errEmail'] = 'Email Must Has Value.';
+                $data['errEmail'] = 'Email là bắt buộc';
             } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $data['errEmail'] = 'Enter Valid Email';
-            } elseif ($this->adminModel->findUserByEmail($email) == false) {
-                $data['errEmail'] = 'This Email Is Not Exist';
+                $data['errEmail'] = 'Định dạng không đúng';
             }
 
             if (empty($password)) {
-                $data['errPassword'] = "Password Must Has Value.";
+                $data['errPassword'] = "Mật khẩu là bắt buộc";
             }
 
             if (empty($data['errEmail']) && empty($data['errPassword'])) {
@@ -44,8 +42,8 @@ class Users extends Controller
                     Session::set('admin_id', $admin->ma_user);
                     Redirect::to('admin/dashboard');
                 } else {
-                    $data['errPassword'] = "Password Not Valid OR not admin";
-                    $this->view('admins.login', $data);
+                    $data['errPassword'] = "Email hoặc mật khẩu không đúng.";
+                    $this->view('admin.login', $data);
                 }
             } else {
                 Redirect::to('admin/users/login');
@@ -61,6 +59,6 @@ class Users extends Controller
         Auth::adminAuth();
         Session::clear('admin_name');
         Session::destroy();
-        Redirect::to('admins/login');
+        Redirect::to('admin/users/login');
     }
 }

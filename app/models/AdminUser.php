@@ -29,9 +29,10 @@ class AdminUser
         $this->db->query("SELECT * FROM admin_user WHERE email =:email");
         $this->db->bind(':email', $email);
         $user = $this->db->single();
-
-        $hashedPassword = $user->password;
-        if (password_verify($password, $hashedPassword)) {
+        if($user){
+            $hashedPassword = $user->password;
+        }
+        if (isset($hashedPassword) && password_verify($password, $hashedPassword)) {
             return $user;
         } else {
             return false;
